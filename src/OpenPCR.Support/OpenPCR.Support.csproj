@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- 本仓自写代码（命名空间 OpenPCR.*）。依赖方向：OpenPCR.Engine / OpenPCR.Runtime → OpenPCR.Support，反向禁止。 -->
+
+  <PropertyGroup>
+    <RootNamespace>OpenPCR</RootNamespace>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+</Project>

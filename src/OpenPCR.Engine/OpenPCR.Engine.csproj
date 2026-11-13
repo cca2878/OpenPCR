@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Battle model and core execution; preserve the C# 9 compilation contract. -->
+
+  <PropertyGroup>
+    <AssemblyName>OpenPCR.Engine</AssemblyName>
+    <!-- 不设根命名空间：命名空间由源码中的显式声明决定 -->
+    <RootNamespace></RootNamespace>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- 保持目标转写所用 C# 9，避免更高语言版本改变重载决议与上下文关键字。 -->
+    <LangVersion>9.0</LangVersion>
+    <!--
+      既有声明形状和裁剪代码的常见警告：
+      CS0108/CS0114 成员隐藏基类成员未写 new/override（原程序集如此）；
+      CS0162 不可达代码；CS0168/CS0219 声明但未使用的局部变量；
+      CS0169/CS0414/CS0649 未使用或从未赋值的字段（裁剪后与 Unity 序列化字段常见）。
+      其余警告仍正常报告。
+    -->
+    <NoWarn>$(NoWarn);CS0108;CS0114;CS0162;CS0168;CS0169;CS0219;CS0414;CS0649</NoWarn>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="../OpenPCR.Support/OpenPCR.Support.csproj" />
+    <ProjectReference Include="../OpenPCR.Runtime/OpenPCR.Runtime.csproj" />
+    <ProjectReference Include="../OpenPCR.Platform/OpenPCR.Platform.csproj" />
+    <ProjectReference Include="../../tools/OpenPCR.Transcription/OpenPCR.Transcription.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" Condition="'$(OpenPcrAuditMode)' == 'Public'" />
+  </ItemGroup>
+
+</Project>

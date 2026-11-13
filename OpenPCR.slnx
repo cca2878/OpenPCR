@@ -1,0 +1,32 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Debug" />
+    <BuildType Name="Release" />
+    <BuildType Name="ReleaseOptimized" />
+  </Configurations>
+  <Folder Name="/src/">
+    <Project Path="src/OpenPCR.Checkpoint/OpenPCR.Checkpoint.csproj" />
+    <Project Path="src/OpenPCR.Growth/OpenPCR.Growth.csproj" />
+    <Project Path="src/OpenPCR.BattleInputs/OpenPCR.BattleInputs.csproj" />
+    <Project Path="src/OpenPCR.Engine/OpenPCR.Engine.csproj" />
+    <Project Path="src/OpenPCR.Support/OpenPCR.Support.csproj" />
+    <Project Path="src/OpenPCR.Host/OpenPCR.Host.csproj" />
+    <Project Path="src/OpenPCR.Runtime/OpenPCR.Runtime.csproj" />
+    <Project Path="src/OpenPCR.Platform/OpenPCR.Platform.csproj" />
+  </Folder>
+  <Folder Name="/tools/">
+    <Project Path="tools/OpenPCR.BattleEditor/OpenPCR.BattleEditor.csproj" />
+    <Project Path="tools/OpenPCR.PrefabExtractor/OpenPCR.PrefabExtractor.csproj" />
+    <Project Path="tools/OpenPCR.Runner/OpenPCR.Runner.csproj" />
+    <Project Path="tools/OpenPCR.Transcription/OpenPCR.Transcription.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/OpenPCR.Bindings.Tests/OpenPCR.Bindings.Tests.csproj" />
+    <Project Path="tests/OpenPCR.Checkpoint.Tests/OpenPCR.Checkpoint.Tests.csproj" />
+    <Project Path="tests/OpenPCR.PrefabExtractor.Tests/OpenPCR.PrefabExtractor.Tests.csproj" />
+    <Project Path="tests/OpenPCR.Growth.Tests/OpenPCR.Growth.Tests.csproj" />
+    <Project Path="tests/OpenPCR.Host.Tests/OpenPCR.Host.Tests.csproj" />
+    <Project Path="tests/OpenPCR.Runtime.Tests/OpenPCR.Runtime.Tests.csproj" />
+    <Project Path="tests/OpenPCR.Transcription.Tests/OpenPCR.Transcription.Tests.csproj" />
+  </Folder>
+</Solution>

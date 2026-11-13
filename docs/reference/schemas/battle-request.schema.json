@@ -1,0 +1,1352 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "openpcr-battle/v2",
+  "description": "Battle request: the player side, device settings, the battle sequence and exactly one mode section (ClanBattle or Labyrinth). Enemies, time limit and background are derived from the mode section and masterdata.",
+  "type": "object",
+  "properties": {
+    "Schema": {
+      "const": "openpcr-battle/v2"
+    },
+    "MasterVersion": {
+      "type": "string"
+    },
+    "Player": {
+      "type": "object",
+      "properties": {
+        "user_info": {
+          "type": "object",
+          "properties": {
+            "team_level": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "team_level"
+          ]
+        },
+        "unit_list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "integer"
+              },
+              "unit_rarity": {
+                "type": "integer"
+              },
+              "unit_level": {
+                "type": "integer"
+              },
+              "promotion_level": {
+                "type": "integer"
+              },
+              "union_burst": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "skill_id": {
+                      "type": "integer"
+                    },
+                    "skill_level": {
+                      "type": "integer"
+                    },
+                    "slot_number": {
+                      "type": "integer",
+                      "default": 0
+                    }
+                  },
+                  "required": [
+                    "skill_id",
+                    "skill_level"
+                  ]
+                }
+              },
+              "main_skill": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/properties/Player/properties/unit_list/items/properties/union_burst/items"
+                }
+              },
+              "ex_skill": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/properties/Player/properties/unit_list/items/properties/union_burst/items"
+                }
+              },
+              "free_skill": {
+                "type": "array",
+                "items": {
+                  "$ref": "#/properties/Player/properties/unit_list/items/properties/union_burst/items"
+                }
+              },
+              "equip_slot": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "is_slot": true,
+                    "id": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "enhancement_level": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "enhancement_pt": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "rank": {
+                      "type": "integer",
+                      "default": 0
+                    }
+                  },
+                  "required": [
+                    "is_slot"
+                  ]
+                }
+              },
+              "battle_rarity": {
+                "type": "integer",
+                "default": 0
+              },
+              "exceed_stage": {
+                "type": "integer",
+                "default": 0
+              },
+              "unique_equip_slot": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "$ref": "#/properties/Player/properties/unit_list/items/properties/equip_slot/items"
+                },
+                "default": null
+              },
+              "ex_equip_slot": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "serial_id": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "ex_equipment_id": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "enhancement_pt": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "sub_status": {
+                      "type": [
+                        "array",
+                        "null"
+                      ],
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "status": {
+                            "type": "integer"
+                          },
+                          "step": {
+                            "type": "integer"
+                          },
+                          "slot_number": {
+                            "type": "integer",
+                            "default": 0
+                          },
+                          "is_lock": {
+                            "default": null
+                          }
+                        },
+                        "required": [
+                          "status",
+                          "step"
+                        ]
+                      },
+                      "default": null
+                    }
+                  }
+                },
+                "default": null
+              },
+              "cb_ex_equip_slot": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "$ref": "#/properties/Player/properties/unit_list/items/properties/ex_equip_slot/items"
+                },
+                "default": null
+              },
+              "skin_data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "icon_skin_id": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "sd_skin_id": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "still_skin_id": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "motion_id": {
+                    "type": "integer",
+                    "default": 0
+                  }
+                },
+                "default": null
+              },
+              "unlock_rarity_6_item": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "quest_clear": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "slot_1": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "slot_2": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "slot_3": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "status_1": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "status_2": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "status_3": {
+                    "type": "integer",
+                    "default": 0
+                  }
+                },
+                "default": null
+              },
+              "resist_status_id": {
+                "type": "integer",
+                "default": 0
+              },
+              "resist_variation_id": {
+                "type": "integer",
+                "default": 0
+              },
+              "bonus_param": {
+                "default": null
+              }
+            },
+            "required": [
+              "id",
+              "unit_rarity",
+              "unit_level",
+              "promotion_level",
+              "union_burst",
+              "main_skill",
+              "ex_skill",
+              "free_skill",
+              "equip_slot"
+            ]
+          }
+        },
+        "read_story_ids": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "unit_role_list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "unit_role_id": {
+                "type": "integer"
+              },
+              "slot_level_1": {
+                "type": "integer"
+              },
+              "enhance_level_1": {
+                "type": "integer"
+              },
+              "slot_level_2": {
+                "type": "integer"
+              },
+              "enhance_level_2": {
+                "type": "integer"
+              },
+              "slot_level_3": {
+                "type": "integer"
+              },
+              "enhance_level_3": {
+                "type": "integer"
+              },
+              "slot_level_4": {
+                "type": "integer"
+              },
+              "enhance_level_4": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "unit_role_id",
+              "slot_level_1",
+              "enhance_level_1",
+              "slot_level_2",
+              "enhance_level_2",
+              "slot_level_3",
+              "enhance_level_3",
+              "slot_level_4",
+              "enhance_level_4"
+            ]
+          }
+        },
+        "ini_setting": {
+          "type": "object",
+          "properties": {
+            "battle_log_type": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "integer"
+              }
+            },
+            "log_barrier": {
+              "type": "object",
+              "properties": {
+                "coefficient": {
+                  "type": "integer"
+                },
+                "threshold": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "coefficient",
+                "threshold"
+              ]
+            }
+          },
+          "required": [
+            "battle_log_type",
+            "log_barrier"
+          ]
+        },
+        "errm": {
+          "type": "integer"
+        },
+        "Releases": {
+          "type": "object",
+          "properties": {
+            "ChangeRarity": {
+              "type": "boolean"
+            },
+            "SkillLevelSync": {
+              "type": "boolean"
+            },
+            "SlipDamageLogBarrier": {
+              "type": "boolean"
+            },
+            "KnightEnhance": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "ChangeRarity",
+            "SkillLevelSync",
+            "SlipDamageLogBarrier",
+            "KnightEnhance"
+          ],
+          "additionalProperties": false
+        },
+        "princess_knight_info": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "talent_level_info_list": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "talent_id": {
+                    "type": "integer"
+                  },
+                  "total_point": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "talent_id",
+                  "total_point"
+                ]
+              }
+            },
+            "talent_skill_last_enhanced_page_node_list": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "node_id": {
+                    "type": "integer"
+                  },
+                  "enhance_level": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "node_id",
+                  "enhance_level"
+                ]
+              }
+            },
+            "team_skill_latest_node": {
+              "type": [
+                "object",
+                "null"
+              ],
+              "properties": {
+                "node_id": {
+                  "type": "integer"
+                },
+                "enhance_level": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "node_id",
+                "enhance_level"
+              ],
+              "default": null
+            }
+          },
+          "required": [
+            "talent_level_info_list",
+            "talent_skill_last_enhanced_page_node_list"
+          ],
+          "default": null
+        },
+        "user_ex_equip": {
+          "type": [
+            "array",
+            "null"
+          ],
+          "items": {
+            "type": "object",
+            "properties": {
+              "serial_id": {
+                "type": "integer"
+              },
+              "ex_equipment_id": {
+                "type": "integer"
+              },
+              "enhancement_pt": {
+                "type": "integer",
+                "default": 0
+              },
+              "rank": {
+                "type": "integer",
+                "default": 0
+              },
+              "sub_status": {
+                "type": [
+                  "array",
+                  "null"
+                ],
+                "items": {
+                  "$ref": "#/properties/Player/properties/unit_list/items/properties/ex_equip_slot/items/properties/sub_status/items"
+                },
+                "default": null
+              }
+            },
+            "required": [
+              "serial_id",
+              "ex_equipment_id"
+            ]
+          },
+          "default": null
+        }
+      },
+      "required": [
+        "user_info",
+        "unit_list",
+        "read_story_ids",
+        "unit_role_list",
+        "ini_setting",
+        "errm",
+        "Releases"
+      ]
+    },
+    "Settings": {
+      "type": "object",
+      "properties": {
+        "FrameRate": {
+          "type": "integer"
+        },
+        "ApplyOtherUserSkins": {
+          "type": "boolean"
+        },
+        "ResetSkillReserveEveryTime": {
+          "type": "boolean"
+        },
+        "AdvantageAndBreakdownBonusShows": {
+          "type": "boolean"
+        },
+        "MultiTargetFirst": {
+          "type": "boolean"
+        },
+        "TalentFormationBonusFirst": {
+          "type": "boolean"
+        },
+        "PlayMultiTargetAppearance": {
+          "type": "boolean",
+          "default": false
+        }
+      },
+      "required": [
+        "FrameRate",
+        "ApplyOtherUserSkins",
+        "ResetSkillReserveEveryTime",
+        "AdvantageAndBreakdownBonusShows",
+        "MultiTargetFirst",
+        "TalentFormationBonusFirst"
+      ],
+      "additionalProperties": false
+    },
+    "Battles": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Party": {
+            "type": "array",
+            "items": {
+              "type": "integer"
+            }
+          },
+          "Opening": {
+            "type": "object",
+            "properties": {
+              "Auto": {
+                "type": "boolean"
+              },
+              "Speed": {
+                "type": "integer"
+              },
+              "SetUnits": {
+                "type": "array",
+                "items": {
+                  "type": "integer"
+                }
+              }
+            },
+            "required": [
+              "Auto",
+              "Speed",
+              "SetUnits"
+            ],
+            "additionalProperties": false
+          },
+          "Seed": {
+            "type": "integer"
+          },
+          "Operations": {
+            "type": [
+              "array",
+              "null"
+            ],
+            "items": {
+              "type": "object",
+              "properties": {
+                "Anchor": {
+                  "enum": [
+                    "BattleFrame",
+                    "BattleClock"
+                  ]
+                },
+                "At": {
+                  "type": "integer"
+                },
+                "Kind": {
+                  "type": "string"
+                },
+                "UnitId": {
+                  "type": "integer",
+                  "default": 0
+                },
+                "Value": {
+                  "type": "boolean",
+                  "default": false
+                }
+              },
+              "required": [
+                "Anchor",
+                "At",
+                "Kind"
+              ]
+            },
+            "default": null
+          },
+          "Opponent": {
+            "default": null
+          }
+        },
+        "required": [
+          "Party",
+          "Opening",
+          "Seed"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "ClanBattle": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "clan_battle_id": {
+          "type": "integer"
+        },
+        "phase": {
+          "type": "integer"
+        },
+        "order_num": {
+          "type": "integer"
+        },
+        "kind": {
+          "type": "string"
+        },
+        "lap_num": {
+          "type": [
+            "integer",
+            "null"
+          ],
+          "default": null
+        },
+        "boss_hp": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "max_hp": {
+              "type": "integer"
+            },
+            "current_hp": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "max_hp",
+            "current_hp"
+          ],
+          "additionalProperties": false,
+          "default": null
+        },
+        "quad_speed": {
+          "type": "boolean",
+          "default": false
+        },
+        "infinity_hp": {
+          "type": "boolean",
+          "default": false
+        },
+        "support": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "unit_id": {
+              "type": "integer"
+            },
+            "unit_data": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "unit_rarity": {
+                  "type": "integer"
+                },
+                "unit_level": {
+                  "type": "integer"
+                },
+                "promotion_level": {
+                  "type": "integer"
+                },
+                "union_burst": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "skill_level": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "skill_level"
+                    ]
+                  }
+                },
+                "main_skill": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/properties/ClanBattle/properties/support/properties/unit_data/properties/union_burst/items"
+                  }
+                },
+                "ex_skill": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/properties/ClanBattle/properties/support/properties/unit_data/properties/union_burst/items"
+                  }
+                },
+                "equip_slot": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "is_slot": true,
+                      "enhancement_pt": {
+                        "type": "integer",
+                        "default": 0
+                      },
+                      "rank": {
+                        "type": "integer",
+                        "default": 0
+                      }
+                    },
+                    "required": [
+                      "is_slot"
+                    ]
+                  }
+                },
+                "battle_rarity": {
+                  "type": "integer",
+                  "default": 0
+                },
+                "unique_equip_slot": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "$ref": "#/properties/ClanBattle/properties/support/properties/unit_data/properties/equip_slot/items"
+                  },
+                  "default": null
+                },
+                "ex_equip_slot": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/ex_equip_slot/items"
+                  },
+                  "default": null
+                },
+                "cb_ex_equip_slot": {
+                  "type": [
+                    "array",
+                    "null"
+                  ],
+                  "items": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/ex_equip_slot/items"
+                  },
+                  "default": null
+                },
+                "skin_data": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "icon_skin_id": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "sd_skin_id": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "still_skin_id": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "motion_id": {
+                      "type": "integer",
+                      "default": 0
+                    }
+                  },
+                  "default": null
+                },
+                "unlock_rarity_6_item": {
+                  "type": [
+                    "object",
+                    "null"
+                  ],
+                  "properties": {
+                    "quest_clear": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "slot_1": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "slot_2": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "slot_3": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "status_1": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "status_2": {
+                      "type": "integer",
+                      "default": 0
+                    },
+                    "status_3": {
+                      "type": "integer",
+                      "default": 0
+                    }
+                  },
+                  "default": null
+                },
+                "resist_status_id": {
+                  "type": "integer",
+                  "default": 0
+                },
+                "resist_variation_id": {
+                  "type": "integer",
+                  "default": 0
+                },
+                "bonus_param": {
+                  "default": null
+                }
+              },
+              "required": [
+                "id",
+                "unit_rarity",
+                "unit_level",
+                "promotion_level",
+                "union_burst",
+                "main_skill",
+                "ex_skill",
+                "equip_slot"
+              ]
+            }
+          },
+          "required": [
+            "unit_id",
+            "unit_data"
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "clan_battle_id",
+        "phase",
+        "order_num",
+        "kind"
+      ],
+      "additionalProperties": false,
+      "default": null
+    },
+    "Labyrinth": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "properties": {
+        "quest_id": {
+          "type": "integer"
+        },
+        "difficulty": {
+          "type": "integer"
+        },
+        "alpha_rupee": {
+          "type": "integer"
+        },
+        "unit_list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "unit_id": {
+                "type": "integer"
+              },
+              "unit_type": {
+                "type": "integer"
+              },
+              "unit_data": {
+                "type": [
+                  "object",
+                  "null"
+                ],
+                "properties": {
+                  "id": {
+                    "type": "integer"
+                  },
+                  "unit_rarity": {
+                    "type": "integer"
+                  },
+                  "unit_level": {
+                    "type": "integer"
+                  },
+                  "promotion_level": {
+                    "type": "integer"
+                  },
+                  "union_burst": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/union_burst"
+                  },
+                  "main_skill": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/main_skill"
+                  },
+                  "ex_skill": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/ex_skill"
+                  },
+                  "free_skill": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/free_skill"
+                  },
+                  "equip_slot": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/equip_slot"
+                  },
+                  "battle_rarity": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "exceed_stage": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "unique_equip_slot": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/unique_equip_slot",
+                    "default": null
+                  },
+                  "ex_equip_slot": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/ex_equip_slot",
+                    "default": null
+                  },
+                  "cb_ex_equip_slot": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/cb_ex_equip_slot",
+                    "default": null
+                  },
+                  "skin_data": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/skin_data",
+                    "default": null
+                  },
+                  "unlock_rarity_6_item": {
+                    "$ref": "#/properties/Player/properties/unit_list/items/properties/unlock_rarity_6_item",
+                    "default": null
+                  },
+                  "resist_status_id": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "resist_variation_id": {
+                    "type": "integer",
+                    "default": 0
+                  },
+                  "bonus_param": {
+                    "default": null
+                  }
+                },
+                "required": [
+                  "id",
+                  "unit_rarity",
+                  "unit_level",
+                  "promotion_level",
+                  "union_burst",
+                  "main_skill",
+                  "ex_skill",
+                  "free_skill",
+                  "equip_slot"
+                ],
+                "default": null
+              }
+            },
+            "required": [
+              "unit_id",
+              "unit_type"
+            ]
+          }
+        },
+        "relic_list": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "relic_id": {
+                "type": "integer"
+              },
+              "effected_count": {
+                "type": "integer"
+              },
+              "enable": {
+                "type": "integer"
+              }
+            },
+            "required": [
+              "relic_id",
+              "effected_count",
+              "enable"
+            ]
+          }
+        },
+        "labyrinth_enhance_node_list": {
+          "type": "array",
+          "items": {
+            "type": "integer"
+          }
+        },
+        "start_state": {
+          "type": [
+            "object",
+            "null"
+          ],
+          "properties": {
+            "PartyIndex": {
+              "type": "integer"
+            },
+            "Enemies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "UnitId": {
+                    "type": "integer"
+                  },
+                  "IdentifyNum": {
+                    "type": "integer"
+                  },
+                  "Hp": {
+                    "type": "integer"
+                  },
+                  "Energy": {
+                    "type": "integer"
+                  },
+                  "SkillLimitCounter": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "skill_id": {
+                          "type": "integer"
+                        },
+                        "counter": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "skill_id",
+                        "counter"
+                      ]
+                    }
+                  },
+                  "MaxHp": {
+                    "type": "integer"
+                  },
+                  "SavedHp": {
+                    "type": "integer"
+                  },
+                  "Level": {
+                    "type": "integer"
+                  },
+                  "Rarity": {
+                    "type": "integer"
+                  },
+                  "PromotionLevel": {
+                    "type": "integer"
+                  },
+                  "EnemyColor": {
+                    "type": "integer"
+                  },
+                  "SkinData": {
+                    "type": [
+                      "object",
+                      "null"
+                    ],
+                    "properties": {
+                      "IconSkinId": {
+                        "type": "integer"
+                      },
+                      "SdSkinId": {
+                        "type": "integer"
+                      },
+                      "StillSkinId": {
+                        "type": "integer"
+                      },
+                      "MotionId": {
+                        "type": "integer"
+                      }
+                    },
+                    "required": [
+                      "IconSkinId",
+                      "SdSkinId",
+                      "StillSkinId",
+                      "MotionId"
+                    ]
+                  }
+                },
+                "required": [
+                  "UnitId",
+                  "IdentifyNum",
+                  "Hp",
+                  "Energy",
+                  "SkillLimitCounter",
+                  "MaxHp",
+                  "SavedHp",
+                  "Level",
+                  "Rarity",
+                  "PromotionLevel",
+                  "EnemyColor",
+                  "SkinData"
+                ]
+              }
+            },
+            "AlreadyDeadEnemies": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "owner_viewer_id": {
+                    "type": "integer"
+                  },
+                  "unit_id": {
+                    "type": "integer"
+                  },
+                  "retired": {
+                    "type": "integer"
+                  },
+                  "hp": {
+                    "type": "integer"
+                  },
+                  "energy": {
+                    "type": "integer"
+                  },
+                  "skill_limit_counter": {
+                    "type": "array",
+                    "items": {
+                      "$ref": "#/properties/Labyrinth/properties/start_state/properties/Enemies/items/properties/SkillLimitCounter/items"
+                    }
+                  },
+                  "damage": {
+                    "type": "integer"
+                  },
+                  "parts_list": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "parts_id": {
+                          "type": "integer"
+                        },
+                        "hp": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "parts_id",
+                        "hp"
+                      ]
+                    }
+                  }
+                },
+                "required": [
+                  "owner_viewer_id",
+                  "unit_id",
+                  "retired",
+                  "hp",
+                  "energy",
+                  "skill_limit_counter",
+                  "damage",
+                  "parts_list"
+                ]
+              }
+            },
+            "Waves": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "wave_num": {
+                    "type": "integer"
+                  },
+                  "unit_info_list": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "unit_id": {
+                          "type": "integer"
+                        },
+                        "owner_viewer_id": {
+                          "type": "integer"
+                        },
+                        "damage": {
+                          "type": "integer"
+                        },
+                        "is_alive": {
+                          "type": "integer"
+                        }
+                      },
+                      "required": [
+                        "unit_id",
+                        "owner_viewer_id",
+                        "damage",
+                        "is_alive"
+                      ]
+                    }
+                  },
+                  "remain_time": {
+                    "type": "integer"
+                  }
+                },
+                "required": [
+                  "wave_num",
+                  "unit_info_list",
+                  "remain_time"
+                ]
+              }
+            },
+            "UnitResults": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "Hp": {
+                      "type": "integer"
+                    },
+                    "MaxHp": {
+                      "type": "integer"
+                    },
+                    "Energy": {
+                      "type": "number"
+                    }
+                  },
+                  "required": [
+                    "Hp",
+                    "MaxHp",
+                    "Energy"
+                  ]
+                }
+              }
+            },
+            "ClearTypes": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "MANUAL",
+                  "AUTO_ONLY",
+                  "ALL_SET_ONLY"
+                ]
+              }
+            },
+            "EnemyContinuation": {
+              "type": [
+                "array",
+                "null"
+              ],
+              "items": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "properties": {
+                    "UnitId": {
+                      "type": "integer"
+                    },
+                    "IdentifyNum": {
+                      "type": "integer"
+                    },
+                    "Hp": {
+                      "type": "integer"
+                    },
+                    "Energy": {
+                      "type": "integer"
+                    },
+                    "SkillLimitCounter": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/properties/Labyrinth/properties/start_state/properties/Enemies/items/properties/SkillLimitCounter/items"
+                      }
+                    }
+                  },
+                  "required": [
+                    "UnitId",
+                    "IdentifyNum",
+                    "Hp",
+                    "Energy",
+                    "SkillLimitCounter"
+                  ]
+                }
+              }
+            }
+          },
+          "required": [
+            "PartyIndex",
+            "Enemies",
+            "AlreadyDeadEnemies",
+            "Waves",
+            "UnitResults",
+            "ClearTypes",
+            "EnemyContinuation"
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "quest_id",
+        "difficulty",
+        "alpha_rupee",
+        "unit_list",
+        "relic_list",
+        "labyrinth_enhance_node_list"
+      ],
+      "default": null
+    }
+  },
+  "required": [
+    "Schema",
+    "MasterVersion",
+    "Player",
+    "Settings",
+    "Battles"
+  ],
+  "additionalProperties": false
+}

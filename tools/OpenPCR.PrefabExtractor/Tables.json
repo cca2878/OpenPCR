@@ -1,0 +1,1046 @@
+{
+  "unit_prefab": [
+    {
+      "name": "prefab_tree",
+      "columns": [
+        {
+          "name": "prefab_id",
+          "kind": "i"
+        },
+        {
+          "name": "source_sha256",
+          "kind": "t"
+        },
+        {
+          "name": "unity_version",
+          "kind": "t"
+        },
+        {
+          "name": "extract_status",
+          "kind": "t"
+        },
+        {
+          "name": "data",
+          "kind": "blob"
+        }
+      ],
+      "primaryKey": [
+        "prefab_id"
+      ],
+      "scope": [
+        "prefab_id"
+      ],
+      "indexes": []
+    }
+  ],
+  "spine": [
+    {
+      "name": "spine_bone",
+      "columns": [
+        {
+          "name": "skeleton_key",
+          "kind": "t"
+        },
+        {
+          "name": "bone_index",
+          "kind": "i"
+        },
+        {
+          "name": "name",
+          "kind": "t"
+        },
+        {
+          "name": "parent_index",
+          "kind": "i"
+        },
+        {
+          "name": "rotation",
+          "kind": "f64"
+        },
+        {
+          "name": "x",
+          "kind": "f64"
+        },
+        {
+          "name": "y",
+          "kind": "f64"
+        },
+        {
+          "name": "scale_x",
+          "kind": "f64"
+        },
+        {
+          "name": "scale_y",
+          "kind": "f64"
+        },
+        {
+          "name": "shear_x",
+          "kind": "f64"
+        },
+        {
+          "name": "shear_y",
+          "kind": "f64"
+        },
+        {
+          "name": "length",
+          "kind": "f64"
+        },
+        {
+          "name": "transform_mode",
+          "kind": "i"
+        }
+      ],
+      "primaryKey": [
+        "skeleton_key",
+        "bone_index"
+      ],
+      "scope": [
+        "skeleton_key"
+      ],
+      "indexes": [
+        [
+          "skeleton_key",
+          "name"
+        ]
+      ]
+    },
+    {
+      "name": "spine_bounding_box",
+      "columns": [
+        {
+          "name": "skeleton_key",
+          "kind": "t"
+        },
+        {
+          "name": "skin",
+          "kind": "t"
+        },
+        {
+          "name": "slot_name",
+          "kind": "t"
+        },
+        {
+          "name": "attachment_name",
+          "kind": "t"
+        },
+        {
+          "name": "slot_index",
+          "kind": "i"
+        },
+        {
+          "name": "vertex_count",
+          "kind": "i"
+        },
+        {
+          "name": "weighted",
+          "kind": "i"
+        }
+      ],
+      "primaryKey": [
+        "skeleton_key",
+        "skin",
+        "slot_name",
+        "attachment_name"
+      ],
+      "scope": [
+        "skeleton_key"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "spine_bounding_box_vertex",
+      "columns": [
+        {
+          "name": "skeleton_key",
+          "kind": "t"
+        },
+        {
+          "name": "skin",
+          "kind": "t"
+        },
+        {
+          "name": "slot_name",
+          "kind": "t"
+        },
+        {
+          "name": "attachment_name",
+          "kind": "t"
+        },
+        {
+          "name": "vertex_index",
+          "kind": "i"
+        },
+        {
+          "name": "x",
+          "kind": "f64"
+        },
+        {
+          "name": "y",
+          "kind": "f64"
+        }
+      ],
+      "primaryKey": [
+        "skeleton_key",
+        "skin",
+        "slot_name",
+        "attachment_name",
+        "vertex_index"
+      ],
+      "scope": [
+        "skeleton_key"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "spine_pose_setup",
+      "columns": [
+        {
+          "name": "skeleton_key",
+          "kind": "t"
+        },
+        {
+          "name": "data",
+          "kind": "zjson"
+        }
+      ],
+      "primaryKey": [
+        "skeleton_key"
+      ],
+      "scope": [
+        "skeleton_key"
+      ],
+      "indexes": []
+    }
+  ],
+  "unit_spine": [
+    {
+      "name": "unit_spine_data",
+      "columns": [
+        {
+          "name": "skin_key",
+          "kind": "t"
+        },
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "data",
+          "kind": "t"
+        }
+      ],
+      "primaryKey": [
+        "bundle"
+      ],
+      "scope": [
+        "skin_key"
+      ],
+      "indexes": []
+    }
+  ],
+  "mode_spine": [
+    {
+      "name": "mode_spine_animation",
+      "columns": [
+        {
+          "name": "mode_key",
+          "kind": "t"
+        },
+        {
+          "name": "anim_name",
+          "kind": "t"
+        },
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "anim_index",
+          "kind": "i"
+        },
+        {
+          "name": "duration_sec",
+          "kind": "f64"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "anim_name"
+      ],
+      "scope": [
+        "mode_key"
+      ],
+      "indexes": [
+        [
+          "mode_key",
+          "anim_name"
+        ]
+      ]
+    },
+    {
+      "name": "mode_spine_pose",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "anim_name",
+          "kind": "t"
+        },
+        {
+          "name": "timelines",
+          "kind": "zproto"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "anim_name"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "mode_spine_setup",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "data",
+          "kind": "zjson"
+        }
+      ],
+      "primaryKey": [
+        "bundle"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "mode_spine_data",
+      "columns": [
+        {
+          "name": "mode_key",
+          "kind": "t"
+        },
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "data",
+          "kind": "t"
+        }
+      ],
+      "primaryKey": [
+        "bundle"
+      ],
+      "scope": [
+        "mode_key"
+      ],
+      "indexes": []
+    }
+  ],
+  "skill_spine": [
+    {
+      "name": "skill_spine_animation",
+      "columns": [
+        {
+          "name": "effect_key",
+          "kind": "t"
+        },
+        {
+          "name": "anim_name",
+          "kind": "t"
+        },
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "anim_index",
+          "kind": "i"
+        },
+        {
+          "name": "duration_sec",
+          "kind": "f64"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "anim_name"
+      ],
+      "scope": [
+        "effect_key"
+      ],
+      "indexes": [
+        [
+          "effect_key",
+          "anim_name"
+        ]
+      ]
+    },
+    {
+      "name": "skill_spine_data",
+      "columns": [
+        {
+          "name": "effect_key",
+          "kind": "t"
+        },
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "data",
+          "kind": "t"
+        }
+      ],
+      "primaryKey": [
+        "bundle"
+      ],
+      "scope": [
+        "effect_key"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "skill_spine_timeline",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "anim_name",
+          "kind": "t"
+        },
+        {
+          "name": "properties",
+          "kind": "zjson"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "anim_name"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": []
+    }
+  ],
+  "firearm": [
+    {
+      "name": "firearm_prefab",
+      "columns": [
+        {
+          "name": "prefab_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "prefab_id",
+          "kind": "i"
+        },
+        {
+          "name": "move_type",
+          "kind": "i"
+        },
+        {
+          "name": "move_rate",
+          "kind": "f64"
+        },
+        {
+          "name": "duration",
+          "kind": "f64"
+        },
+        {
+          "name": "hit_delay",
+          "kind": "f64"
+        },
+        {
+          "name": "root_position_x",
+          "kind": "f64"
+        },
+        {
+          "name": "root_position_y",
+          "kind": "f64"
+        },
+        {
+          "name": "root_position_z",
+          "kind": "f64"
+        },
+        {
+          "name": "collider_center_x",
+          "kind": "f64"
+        },
+        {
+          "name": "collider_extents_x",
+          "kind": "f64"
+        },
+        {
+          "name": "collider_extents_y",
+          "kind": "f64"
+        },
+        {
+          "name": "prefab_name",
+          "kind": "t"
+        }
+      ],
+      "primaryKey": [
+        "prefab_path_id"
+      ],
+      "scope": [
+        "prefab_id"
+      ],
+      "indexes": []
+    }
+  ],
+  "battle_manager": [
+    {
+      "name": "battle_manager_field",
+      "columns": [
+        {
+          "name": "field",
+          "kind": "t"
+        },
+        {
+          "name": "value",
+          "kind": "f64"
+        }
+      ],
+      "primaryKey": [
+        "field"
+      ],
+      "scope": [],
+      "indexes": []
+    },
+    {
+      "name": "battle_manager_transform",
+      "columns": [
+        {
+          "name": "path_id",
+          "kind": "i"
+        },
+        {
+          "name": "name",
+          "kind": "t"
+        },
+        {
+          "name": "depth",
+          "kind": "i"
+        },
+        {
+          "name": "local_scale_x",
+          "kind": "f64"
+        },
+        {
+          "name": "father_path_id",
+          "kind": "i?"
+        }
+      ],
+      "primaryKey": [
+        "path_id"
+      ],
+      "scope": [],
+      "indexes": []
+    },
+    {
+      "name": "battle_spine_transform",
+      "columns": [
+        {
+          "name": "asset_path",
+          "kind": "t"
+        },
+        {
+          "name": "data",
+          "kind": "t"
+        }
+      ],
+      "primaryKey": [
+        "asset_path"
+      ],
+      "scope": [],
+      "indexes": []
+    }
+  ],
+  "cysp": [
+    {
+      "name": "cysp_animation",
+      "columns": [
+        {
+          "name": "unit_prefix",
+          "kind": "t"
+        },
+        {
+          "name": "anim_name",
+          "kind": "t"
+        },
+        {
+          "name": "anim_base",
+          "kind": "t"
+        },
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "anim_index",
+          "kind": "i"
+        },
+        {
+          "name": "seg_offset",
+          "kind": "i"
+        },
+        {
+          "name": "seg_size",
+          "kind": "i"
+        },
+        {
+          "name": "duration_sec",
+          "kind": "f64"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "anim_name"
+      ],
+      "scope": [
+        "unit_prefix"
+      ],
+      "indexes": [
+        [
+          "unit_prefix",
+          "anim_base"
+        ],
+        [
+          "anim_name"
+        ]
+      ]
+    },
+    {
+      "name": "cysp_event",
+      "columns": [
+        {
+          "name": "unit_prefix",
+          "kind": "t"
+        },
+        {
+          "name": "anim_base",
+          "kind": "t"
+        },
+        {
+          "name": "event_index",
+          "kind": "i"
+        },
+        {
+          "name": "time_sec",
+          "kind": "f64"
+        }
+      ],
+      "primaryKey": [
+        "unit_prefix",
+        "anim_base",
+        "event_index"
+      ],
+      "scope": [
+        "unit_prefix"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "cysp_pose",
+      "columns": [
+        {
+          "name": "unit_prefix",
+          "kind": "t"
+        },
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "anim_name",
+          "kind": "t"
+        },
+        {
+          "name": "timelines",
+          "kind": "zproto"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "anim_name"
+      ],
+      "scope": [
+        "unit_prefix"
+      ],
+      "indexes": []
+    }
+  ],
+  "circle_effect": [
+    {
+      "name": "circle_effect_prefab",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "prefab_name",
+          "kind": "t"
+        },
+        {
+          "name": "children_count",
+          "kind": "i"
+        },
+        {
+          "name": "follow_xy",
+          "kind": "i"
+        },
+        {
+          "name": "duration",
+          "kind": "f32"
+        },
+        {
+          "name": "radius",
+          "kind": "f32"
+        },
+        {
+          "name": "roll",
+          "kind": "f32"
+        },
+        {
+          "name": "yaw",
+          "kind": "f32"
+        },
+        {
+          "name": "angular_velocity",
+          "kind": "f32"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "prefab_name"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "circle_effect_child",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "prefab_name",
+          "kind": "t"
+        },
+        {
+          "name": "child_index",
+          "kind": "i"
+        },
+        {
+          "name": "local_position_x",
+          "kind": "f32"
+        },
+        {
+          "name": "start_pitch",
+          "kind": "f32"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "prefab_name",
+        "child_index"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": []
+    }
+  ],
+  "skill_effect": [
+    {
+      "name": "skill_effect_component",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "prefab_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "component_index",
+          "kind": "i"
+        },
+        {
+          "name": "component_class",
+          "kind": "t"
+        },
+        {
+          "name": "prefab_name",
+          "kind": "t"
+        },
+        {
+          "name": "is_repeat",
+          "kind": "i"
+        },
+        {
+          "name": "particle_file_id",
+          "kind": "i"
+        },
+        {
+          "name": "particle_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "root_position_x",
+          "kind": "f64"
+        },
+        {
+          "name": "root_position_y",
+          "kind": "f64"
+        },
+        {
+          "name": "root_position_z",
+          "kind": "f64"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "prefab_path_id",
+        "component_index"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": [
+        [
+          "prefab_path_id"
+        ],
+        [
+          "prefab_name"
+        ]
+      ]
+    },
+    {
+      "name": "skill_effect_particle",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "particle_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "duration",
+          "kind": "f64"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "particle_path_id"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": [
+        [
+          "particle_path_id"
+        ]
+      ]
+    },
+    {
+      "name": "count_down_effect",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "prefab_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "warning_limit_time",
+          "kind": "i"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "prefab_path_id"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "count_down_end_effect",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "prefab_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "ordinal",
+          "kind": "i"
+        },
+        {
+          "name": "effect_file_id",
+          "kind": "i"
+        },
+        {
+          "name": "effect_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "left_file_id",
+          "kind": "i"
+        },
+        {
+          "name": "left_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "time",
+          "kind": "f64"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "prefab_path_id",
+        "ordinal"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "skill_effect_component_data",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "component_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "prefab_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "component_index",
+          "kind": "i"
+        },
+        {
+          "name": "data",
+          "kind": "t"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "component_path_id"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "skill_effect_tweener",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "component_path_id",
+          "kind": "i"
+        },
+        {
+          "name": "component_class",
+          "kind": "t"
+        },
+        {
+          "name": "data",
+          "kind": "t"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "component_path_id"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "skill_effect_bundle",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        }
+      ],
+      "primaryKey": [
+        "bundle"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": []
+    },
+    {
+      "name": "skill_effect_asset",
+      "columns": [
+        {
+          "name": "bundle",
+          "kind": "t"
+        },
+        {
+          "name": "asset_path",
+          "kind": "t"
+        },
+        {
+          "name": "prefab_path_id",
+          "kind": "i"
+        }
+      ],
+      "primaryKey": [
+        "bundle",
+        "asset_path"
+      ],
+      "scope": [
+        "bundle"
+      ],
+      "indexes": [
+        [
+          "asset_path"
+        ]
+      ]
+    }
+  ]
+}

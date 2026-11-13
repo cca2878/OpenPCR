@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace></RootNamespace>
+    <LangVersion>9.0</LangVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <!-- 与 OpenPCR.Runtime 相同：沿用被替身的外部依赖程序集的 0.0.0.0 版本身份。 -->
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="../OpenPCR.Runtime/OpenPCR.Runtime.csproj" /></ItemGroup>
+</Project>

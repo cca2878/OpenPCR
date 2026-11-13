@@ -1,0 +1,7 @@
+namespace Elements
+{
+	public static class UnitRoleDefine
+	{
+		public enum eRoleParamType { NONE = 0, HP = 1, ATTACK = 2, DEF = 3, MAGIC_DEF = 4, CRITICAL = 5, CRITICAL_DAMAGE_RATE = 6, DAMAGE_UP_PERCENT = 7, ABNORMAL_STATE_DODGE_HIT = 8, ABNORMAL_STATE_DODGE_RESIST = 9, ATTACK_ENHANCE = 10, BUFF_ENHANCE = 11, DEBUFF_ENHANCE = 12, HEAL_ENHANCE = 13, ENERGY_CHARGE = 14 }
+	}
+}

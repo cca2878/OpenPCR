@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../OpenPCR.Checkpoint/OpenPCR.Checkpoint.csproj" />
+    <ProjectReference Include="../OpenPCR.Growth/OpenPCR.Growth.csproj" />
+    <ProjectReference Include="../OpenPCR.BattleInputs/OpenPCR.BattleInputs.csproj" />
+    <EmbeddedResource Include="Inputs/common-effect-paths.json" />
+    <ProjectReference Include="../OpenPCR.Engine/OpenPCR.Engine.csproj" />
+    <ProjectReference Include="../OpenPCR.Runtime/OpenPCR.Runtime.csproj" />
+    <PackageReference Include="Microsoft.Data.Sqlite" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" />
+    <PackageReference Include="Google.Protobuf" />
+    <PackageReference Include="Grpc.Tools" PrivateAssets="all" />
+    <Protobuf Include="Schema/unit_prefab.proto" GrpcServices="None" Access="Internal" />
+    <Protobuf Include="Schema/spine_animation.proto" GrpcServices="None" Access="Internal" />
+  </ItemGroup>
+</Project>

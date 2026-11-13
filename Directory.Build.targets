@@ -1,0 +1,12 @@
+<Project InitialTargets="OpenPcrValidateAuditMode">
+  <Target Name="OpenPcrValidateAuditMode">
+    <Error Condition="'$(OpenPcrAuditMode)' != 'Private' and '$(OpenPcrAuditMode)' != 'Public'" Text="OpenPcrAuditMode must be Private or Public." />
+  </Target>
+  <ItemGroup Condition="'$(MSBuildProjectName)' == 'OpenPCR.Engine' or '$(MSBuildProjectName)' == 'OpenPCR.Runtime'">
+    <CompilerVisibleProperty Include="OpenPcrAuditMode" />
+  </ItemGroup>
+  <Import Project="$(OpenPcrBuildTargets)" Condition="'$(OpenPcrAuditMode)' == 'Private' and '$(OpenPcrBuildTargets)' != ''" />
+  <Target Name="OpenPcrRequireAuditConfiguration" BeforeTargets="CoreCompile" Condition="'$(MSBuildProjectName)' == 'OpenPCR.Engine' or '$(MSBuildProjectName)' == 'OpenPCR.Runtime'">
+    <Error Condition="'$(OpenPcrAuditMode)' != 'Public' and '$(OpenPcrAuditConfigured)' != 'true'" Text="The requested audit mode requires a configured build extension." />
+  </Target>
+</Project>

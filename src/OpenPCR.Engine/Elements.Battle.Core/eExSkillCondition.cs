@@ -1,0 +1,30 @@
+namespace Elements.Battle.Core
+{
+	public enum eExSkillCondition
+	{
+		START = 0,
+		DODGE = 1,
+		DAMAGED = 2,
+		TRIGGER_HP = 3,
+		CRITICAL_DAMAGE = 5,
+		LIMIT_TIME = 7,
+		UNABLE_ACTION = 100,
+		PARALYSIS = 103,
+		FREEZE = 104,
+		CHAINED = 105,
+		SLEEP = 106,
+		STUN = 107,
+		STONE = 108,
+		PAUSE_ACTION = 111,
+		SLIP_DAMAGE = 120,
+		POISON = 121,
+		BURN = 122,
+		CURSE = 123,
+		VENOM = 124,
+		HEX = 125,
+		POISON_OR_VENOM = 141,
+		CURSE_OR_HEX = 143,
+		CONVERT = 150,
+		CONFUSION = 151
+	}
+}

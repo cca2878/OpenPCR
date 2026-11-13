@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/OpenPCR.Host/OpenPCR.Host.csproj" />
+    <EmbeddedResource Include="../../examples/battles/trial.json" LogicalName="trial-basic.json" />
+    <EmbeddedResource Include="../../examples/battles/clan-rehearsal.json" LogicalName="clan-rehearsal-basic.json" />
+    <EmbeddedResource Include="../../examples/battles/labyrinth-normal.json" LogicalName="labyrinth-basic.json" />
+  </ItemGroup>
+</Project>

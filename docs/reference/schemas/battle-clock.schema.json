@@ -1,0 +1,148 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "openpcr-battle-clock/v1",
+  "description": "Optional explicit Unity update clock.",
+  "type": "object",
+  "properties": {
+    "Schema": {
+      "const": "openpcr-battle-clock/v1"
+    },
+    "InitialFrame": {
+      "type": "object",
+      "properties": {
+        "Time": {
+          "type": "object",
+          "properties": {
+            "Count": {
+              "type": "integer"
+            },
+            "Numerator": {
+              "type": "integer"
+            },
+            "Denominator": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "Count",
+            "Numerator",
+            "Denominator"
+          ],
+          "additionalProperties": false
+        },
+        "DeltaTime": {
+          "type": "object",
+          "properties": {
+            "Count": {
+              "type": "integer"
+            },
+            "Numerator": {
+              "type": "integer"
+            },
+            "Denominator": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "Count",
+            "Numerator",
+            "Denominator"
+          ],
+          "additionalProperties": false
+        },
+        "UnscaledTime": {
+          "type": "object",
+          "properties": {
+            "Count": {
+              "type": "integer"
+            },
+            "Numerator": {
+              "type": "integer"
+            },
+            "Denominator": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "Count",
+            "Numerator",
+            "Denominator"
+          ],
+          "additionalProperties": false
+        },
+        "UnscaledDeltaTime": {
+          "type": "object",
+          "properties": {
+            "Count": {
+              "type": "integer"
+            },
+            "Numerator": {
+              "type": "integer"
+            },
+            "Denominator": {
+              "type": "integer"
+            }
+          },
+          "required": [
+            "Count",
+            "Numerator",
+            "Denominator"
+          ],
+          "additionalProperties": false
+        },
+        "FrameCount": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "Time",
+        "DeltaTime",
+        "UnscaledTime",
+        "UnscaledDeltaTime",
+        "FrameCount"
+      ],
+      "additionalProperties": false
+    },
+    "InitialTimeScale": {
+      "type": "number"
+    },
+    "Updates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "Time": {
+            "$ref": "#/properties/InitialFrame/properties/Time"
+          },
+          "DeltaTime": {
+            "$ref": "#/properties/InitialFrame/properties/DeltaTime"
+          },
+          "UnscaledTime": {
+            "$ref": "#/properties/InitialFrame/properties/UnscaledTime"
+          },
+          "UnscaledDeltaTime": {
+            "$ref": "#/properties/InitialFrame/properties/UnscaledDeltaTime"
+          },
+          "FrameCount": {
+            "type": "integer"
+          }
+        },
+        "required": [
+          "Time",
+          "DeltaTime",
+          "UnscaledTime",
+          "UnscaledDeltaTime",
+          "FrameCount"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "Schema",
+    "InitialFrame",
+    "InitialTimeScale",
+    "Updates"
+  ],
+  "additionalProperties": false
+}

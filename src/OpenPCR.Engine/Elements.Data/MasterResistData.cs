@@ -1,0 +1,350 @@
+using System;
+using System.Collections.Generic;
+
+namespace Elements.Data
+{
+	public class MasterResistData : AbstractMasterData
+	{
+		private Elements.Data.MasterEnemyDatabase _db;
+		private System.Collections.Generic.Dictionary<System.Int32, Elements.Data.MasterResistData.ResistData> _lazyPrimaryKeyDictionary;
+		public class ResistData
+		{
+			protected global::System.Int32 _resist_status_id;
+			protected global::System.Int32 _ailment_1;
+			protected global::System.Int32 _ailment_2;
+			protected global::System.Int32 _ailment_3;
+			protected global::System.Int32 _ailment_4;
+			protected global::System.Int32 _ailment_5;
+			protected global::System.Int32 _ailment_6;
+			protected global::System.Int32 _ailment_7;
+			protected global::System.Int32 _ailment_8;
+			protected global::System.Int32 _ailment_9;
+			protected global::System.Int32 _ailment_10;
+			protected global::System.Int32 _ailment_11;
+			protected global::System.Int32 _ailment_12;
+			protected global::System.Int32 _ailment_13;
+			protected global::System.Int32 _ailment_14;
+			protected global::System.Int32 _ailment_15;
+			protected global::System.Int32 _ailment_16;
+			protected global::System.Int32 _ailment_17;
+			protected global::System.Int32 _ailment_18;
+			protected global::System.Int32 _ailment_19;
+			protected global::System.Int32 _ailment_20;
+			protected global::System.Int32 _ailment_21;
+			protected global::System.Int32 _ailment_22;
+			protected global::System.Int32 _ailment_23;
+			protected global::System.Int32 _ailment_24;
+			protected global::System.Int32 _ailment_25;
+			protected global::System.Int32 _ailment_26;
+			protected global::System.Int32 _ailment_27;
+			protected global::System.Int32 _ailment_28;
+			protected global::System.Int32 _ailment_29;
+			protected global::System.Int32 _ailment_30;
+			protected global::System.Int32 _ailment_31;
+			protected global::System.Int32 _ailment_32;
+			protected global::System.Int32 _ailment_33;
+			protected global::System.Int32 _ailment_34;
+			protected global::System.Int32 _ailment_35;
+			protected global::System.Int32 _ailment_36;
+			protected global::System.Int32 _ailment_37;
+			protected global::System.Int32 _ailment_38;
+			protected global::System.Int32 _ailment_39;
+			protected global::System.Int32 _ailment_40;
+			protected global::System.Int32 _ailment_41;
+			protected global::System.Int32 _ailment_42;
+			protected global::System.Int32 _ailment_43;
+			protected global::System.Int32 _ailment_44;
+			protected global::System.Int32 _ailment_45;
+			protected global::System.Int32 _ailment_46;
+			protected global::System.Int32 _ailment_47;
+			protected global::System.Int32 _ailment_48;
+			protected global::System.Int32 _ailment_49;
+			protected global::System.Int32 _ailment_50;
+			protected global::System.Int32 _ailment_51;
+			protected global::System.Int32 _ailment_52;
+			protected global::System.Int32 _ailment_53;
+			protected global::System.Int32 _ailment_54;
+			protected global::System.Int32 _ailment_55;
+			protected global::System.Int32 _ailment_56;
+			protected global::System.Int32 _ailment_57;
+			protected global::System.Int32 _ailment_58;
+			protected global::System.Int32 _ailment_59;
+			protected global::System.Int32 _ailment_60;
+			protected global::System.Int32 _ailment_61;
+			protected global::System.Int32 _ailment_62;
+			protected global::System.Int32 _ailment_63;
+			protected global::System.Int32 _ailment_64;
+			protected global::System.Int32 _ailment_65;
+			protected global::System.Int32 _ailment_66;
+			protected global::System.Int32 _ailment_67;
+			protected global::System.Int32 _ailment_68;
+			protected global::System.Int32 _ailment_69;
+			protected global::System.Int32 _ailment_70;
+			protected global::System.Int32 _ailment_71;
+			protected global::System.Int32 _ailment_72;
+			protected global::System.Int32 _ailment_73;
+			protected global::System.Int32 _ailment_74;
+			protected global::System.Int32 _ailment_75;
+			protected global::System.Int32 _ailment_76;
+			protected global::System.Int32 _ailment_77;
+			protected global::System.Int32 _ailment_78;
+			protected global::System.Int32 _ailment_79;
+			protected global::System.Int32 _ailment_80;
+			protected global::System.Int32 _ailment_81;
+			protected global::System.Int32 _ailment_82;
+			protected global::System.Int32 _ailment_83;
+			protected global::System.Int32 _ailment_84;
+			protected global::System.Int32 _ailment_85;
+			protected global::System.Int32 _ailment_86;
+			protected global::System.Int32 _ailment_87;
+			protected global::System.Int32 _ailment_88;
+			protected global::System.Int32 _ailment_89;
+			protected global::System.Int32 _ailment_90;
+			protected global::System.Int32 _ailment_91;
+			protected global::System.Int32 _ailment_92;
+			protected global::System.Int32 _ailment_93;
+			protected global::System.Int32 _ailment_94;
+			protected global::System.Int32 _ailment_95;
+			protected global::System.Int32 _ailment_96;
+			protected global::System.Int32 _ailment_97;
+			protected global::System.Int32 _ailment_98;
+			protected global::System.Int32 _ailment_99;
+			protected global::System.Int32 _ailment_100;
+			public int[] Ailments { get; set; }
+			public ResistData(System.Int32 resist_status_id = 0, System.Int32 ailment_1 = 0, System.Int32 ailment_2 = 0, System.Int32 ailment_3 = 0, System.Int32 ailment_4 = 0, System.Int32 ailment_5 = 0, System.Int32 ailment_6 = 0, System.Int32 ailment_7 = 0, System.Int32 ailment_8 = 0, System.Int32 ailment_9 = 0, System.Int32 ailment_10 = 0, System.Int32 ailment_11 = 0, System.Int32 ailment_12 = 0, System.Int32 ailment_13 = 0, System.Int32 ailment_14 = 0, System.Int32 ailment_15 = 0, System.Int32 ailment_16 = 0, System.Int32 ailment_17 = 0, System.Int32 ailment_18 = 0, System.Int32 ailment_19 = 0, System.Int32 ailment_20 = 0, System.Int32 ailment_21 = 0, System.Int32 ailment_22 = 0, System.Int32 ailment_23 = 0, System.Int32 ailment_24 = 0, System.Int32 ailment_25 = 0, System.Int32 ailment_26 = 0, System.Int32 ailment_27 = 0, System.Int32 ailment_28 = 0, System.Int32 ailment_29 = 0, System.Int32 ailment_30 = 0, System.Int32 ailment_31 = 0, System.Int32 ailment_32 = 0, System.Int32 ailment_33 = 0, System.Int32 ailment_34 = 0, System.Int32 ailment_35 = 0, System.Int32 ailment_36 = 0, System.Int32 ailment_37 = 0, System.Int32 ailment_38 = 0, System.Int32 ailment_39 = 0, System.Int32 ailment_40 = 0, System.Int32 ailment_41 = 0, System.Int32 ailment_42 = 0, System.Int32 ailment_43 = 0, System.Int32 ailment_44 = 0, System.Int32 ailment_45 = 0, System.Int32 ailment_46 = 0, System.Int32 ailment_47 = 0, System.Int32 ailment_48 = 0, System.Int32 ailment_49 = 0, System.Int32 ailment_50 = 0, System.Int32 ailment_51 = 0, System.Int32 ailment_52 = 0, System.Int32 ailment_53 = 0, System.Int32 ailment_54 = 0, System.Int32 ailment_55 = 0, System.Int32 ailment_56 = 0, System.Int32 ailment_57 = 0, System.Int32 ailment_58 = 0, System.Int32 ailment_59 = 0, System.Int32 ailment_60 = 0, System.Int32 ailment_61 = 0, System.Int32 ailment_62 = 0, System.Int32 ailment_63 = 0, System.Int32 ailment_64 = 0, System.Int32 ailment_65 = 0, System.Int32 ailment_66 = 0, System.Int32 ailment_67 = 0, System.Int32 ailment_68 = 0, System.Int32 ailment_69 = 0, System.Int32 ailment_70 = 0, System.Int32 ailment_71 = 0, System.Int32 ailment_72 = 0, System.Int32 ailment_73 = 0, System.Int32 ailment_74 = 0, System.Int32 ailment_75 = 0, System.Int32 ailment_76 = 0, System.Int32 ailment_77 = 0, System.Int32 ailment_78 = 0, System.Int32 ailment_79 = 0, System.Int32 ailment_80 = 0, System.Int32 ailment_81 = 0, System.Int32 ailment_82 = 0, System.Int32 ailment_83 = 0, System.Int32 ailment_84 = 0, System.Int32 ailment_85 = 0, System.Int32 ailment_86 = 0, System.Int32 ailment_87 = 0, System.Int32 ailment_88 = 0, System.Int32 ailment_89 = 0, System.Int32 ailment_90 = 0, System.Int32 ailment_91 = 0, System.Int32 ailment_92 = 0, System.Int32 ailment_93 = 0, System.Int32 ailment_94 = 0, System.Int32 ailment_95 = 0, System.Int32 ailment_96 = 0, System.Int32 ailment_97 = 0, System.Int32 ailment_98 = 0, System.Int32 ailment_99 = 0, System.Int32 ailment_100 = 0)
+			{
+				_resist_status_id = resist_status_id;
+				_ailment_1 = ailment_1;
+				_ailment_2 = ailment_2;
+				_ailment_3 = ailment_3;
+				_ailment_4 = ailment_4;
+				_ailment_5 = ailment_5;
+				_ailment_6 = ailment_6;
+				_ailment_7 = ailment_7;
+				_ailment_8 = ailment_8;
+				_ailment_9 = ailment_9;
+				_ailment_10 = ailment_10;
+				_ailment_11 = ailment_11;
+				_ailment_12 = ailment_12;
+				_ailment_13 = ailment_13;
+				_ailment_14 = ailment_14;
+				_ailment_15 = ailment_15;
+				_ailment_16 = ailment_16;
+				_ailment_17 = ailment_17;
+				_ailment_18 = ailment_18;
+				_ailment_19 = ailment_19;
+				_ailment_20 = ailment_20;
+				_ailment_21 = ailment_21;
+				_ailment_22 = ailment_22;
+				_ailment_23 = ailment_23;
+				_ailment_24 = ailment_24;
+				_ailment_25 = ailment_25;
+				_ailment_26 = ailment_26;
+				_ailment_27 = ailment_27;
+				_ailment_28 = ailment_28;
+				_ailment_29 = ailment_29;
+				_ailment_30 = ailment_30;
+				_ailment_31 = ailment_31;
+				_ailment_32 = ailment_32;
+				_ailment_33 = ailment_33;
+				_ailment_34 = ailment_34;
+				_ailment_35 = ailment_35;
+				_ailment_36 = ailment_36;
+				_ailment_37 = ailment_37;
+				_ailment_38 = ailment_38;
+				_ailment_39 = ailment_39;
+				_ailment_40 = ailment_40;
+				_ailment_41 = ailment_41;
+				_ailment_42 = ailment_42;
+				_ailment_43 = ailment_43;
+				_ailment_44 = ailment_44;
+				_ailment_45 = ailment_45;
+				_ailment_46 = ailment_46;
+				_ailment_47 = ailment_47;
+				_ailment_48 = ailment_48;
+				_ailment_49 = ailment_49;
+				_ailment_50 = ailment_50;
+				_ailment_51 = ailment_51;
+				_ailment_52 = ailment_52;
+				_ailment_53 = ailment_53;
+				_ailment_54 = ailment_54;
+				_ailment_55 = ailment_55;
+				_ailment_56 = ailment_56;
+				_ailment_57 = ailment_57;
+				_ailment_58 = ailment_58;
+				_ailment_59 = ailment_59;
+				_ailment_60 = ailment_60;
+				_ailment_61 = ailment_61;
+				_ailment_62 = ailment_62;
+				_ailment_63 = ailment_63;
+				_ailment_64 = ailment_64;
+				_ailment_65 = ailment_65;
+				_ailment_66 = ailment_66;
+				_ailment_67 = ailment_67;
+				_ailment_68 = ailment_68;
+				_ailment_69 = ailment_69;
+				_ailment_70 = ailment_70;
+				_ailment_71 = ailment_71;
+				_ailment_72 = ailment_72;
+				_ailment_73 = ailment_73;
+				_ailment_74 = ailment_74;
+				_ailment_75 = ailment_75;
+				_ailment_76 = ailment_76;
+				_ailment_77 = ailment_77;
+				_ailment_78 = ailment_78;
+				_ailment_79 = ailment_79;
+				_ailment_80 = ailment_80;
+				_ailment_81 = ailment_81;
+				_ailment_82 = ailment_82;
+				_ailment_83 = ailment_83;
+				_ailment_84 = ailment_84;
+				_ailment_85 = ailment_85;
+				_ailment_86 = ailment_86;
+				_ailment_87 = ailment_87;
+				_ailment_88 = ailment_88;
+				_ailment_89 = ailment_89;
+				_ailment_90 = ailment_90;
+				_ailment_91 = ailment_91;
+				_ailment_92 = ailment_92;
+				_ailment_93 = ailment_93;
+				_ailment_94 = ailment_94;
+				_ailment_95 = ailment_95;
+				_ailment_96 = ailment_96;
+				_ailment_97 = ailment_97;
+				_ailment_98 = ailment_98;
+				_ailment_99 = ailment_99;
+				_ailment_100 = ailment_100;
+				SetUp();
+			}
+			public void SetUp()
+			{
+				Ailments = new int[100];
+				Ailments[0] = _ailment_1;
+				Ailments[1] = _ailment_2;
+				Ailments[2] = _ailment_3;
+				Ailments[3] = _ailment_4;
+				Ailments[4] = _ailment_5;
+				Ailments[5] = _ailment_6;
+				Ailments[6] = _ailment_7;
+				Ailments[7] = _ailment_8;
+				Ailments[8] = _ailment_9;
+				Ailments[9] = _ailment_10;
+				Ailments[10] = _ailment_11;
+				Ailments[11] = _ailment_12;
+				Ailments[12] = _ailment_13;
+				Ailments[13] = _ailment_14;
+				Ailments[14] = _ailment_15;
+				Ailments[15] = _ailment_16;
+				Ailments[16] = _ailment_17;
+				Ailments[17] = _ailment_18;
+				Ailments[18] = _ailment_19;
+				Ailments[19] = _ailment_20;
+				Ailments[20] = _ailment_21;
+				Ailments[21] = _ailment_22;
+				Ailments[22] = _ailment_23;
+				Ailments[23] = _ailment_24;
+				Ailments[24] = _ailment_25;
+				Ailments[25] = _ailment_26;
+				Ailments[26] = _ailment_27;
+				Ailments[27] = _ailment_28;
+				Ailments[28] = _ailment_29;
+				Ailments[29] = _ailment_30;
+				Ailments[30] = _ailment_31;
+				Ailments[31] = _ailment_32;
+				Ailments[32] = _ailment_33;
+				Ailments[33] = _ailment_34;
+				Ailments[34] = _ailment_35;
+				Ailments[35] = _ailment_36;
+				Ailments[36] = _ailment_37;
+				Ailments[37] = _ailment_38;
+				Ailments[38] = _ailment_39;
+				Ailments[39] = _ailment_40;
+				Ailments[40] = _ailment_41;
+				Ailments[41] = _ailment_42;
+				Ailments[42] = _ailment_43;
+				Ailments[43] = _ailment_44;
+				Ailments[44] = _ailment_45;
+				Ailments[45] = _ailment_46;
+				Ailments[46] = _ailment_47;
+				Ailments[47] = _ailment_48;
+				Ailments[48] = _ailment_49;
+				Ailments[49] = _ailment_50;
+				Ailments[50] = _ailment_51;
+				Ailments[51] = _ailment_52;
+				Ailments[52] = _ailment_53;
+				Ailments[53] = _ailment_54;
+				Ailments[54] = _ailment_55;
+				Ailments[55] = _ailment_56;
+				Ailments[56] = _ailment_57;
+				Ailments[57] = _ailment_58;
+				Ailments[58] = _ailment_59;
+				Ailments[59] = _ailment_60;
+				Ailments[60] = _ailment_61;
+				Ailments[61] = _ailment_62;
+				Ailments[62] = _ailment_63;
+				Ailments[63] = _ailment_64;
+				Ailments[64] = _ailment_65;
+				Ailments[65] = _ailment_66;
+				Ailments[66] = _ailment_67;
+				Ailments[67] = _ailment_68;
+				Ailments[68] = _ailment_69;
+				Ailments[69] = _ailment_70;
+				Ailments[70] = _ailment_71;
+				Ailments[71] = _ailment_72;
+				Ailments[72] = _ailment_73;
+				Ailments[73] = _ailment_74;
+				Ailments[74] = _ailment_75;
+				Ailments[75] = _ailment_76;
+				Ailments[76] = _ailment_77;
+				Ailments[77] = _ailment_78;
+				Ailments[78] = _ailment_79;
+				Ailments[79] = _ailment_80;
+				Ailments[80] = _ailment_81;
+				Ailments[81] = _ailment_82;
+				Ailments[82] = _ailment_83;
+				Ailments[83] = _ailment_84;
+				Ailments[84] = _ailment_85;
+				Ailments[85] = _ailment_86;
+				Ailments[86] = _ailment_87;
+				Ailments[87] = _ailment_88;
+				Ailments[88] = _ailment_89;
+				Ailments[89] = _ailment_90;
+				Ailments[90] = _ailment_91;
+				Ailments[91] = _ailment_92;
+				Ailments[92] = _ailment_93;
+				Ailments[93] = _ailment_94;
+				Ailments[94] = _ailment_95;
+				Ailments[95] = _ailment_96;
+				Ailments[96] = _ailment_97;
+				Ailments[97] = _ailment_98;
+				Ailments[98] = _ailment_99;
+				Ailments[99] = _ailment_100;
+			}
+		}
+		public MasterResistData(Elements.Data.MasterEnemyDatabase db) : base(db)
+		{
+			_lazyPrimaryKeyDictionary = new Dictionary<int, ResistData>();
+			_db = db;
+		}
+		[global::OpenPCR.Migration("1531cf6a-460c-4e5a-95da-ff14984d1862")]
+		public ResistData Get(int resist_status_id)
+		{
+			ResistData value = null;
+			if (!_lazyPrimaryKeyDictionary.TryGetValue(resist_status_id, out value))
+			{
+				value = _db != null ? _SelectOne(resist_status_id) : null;
+				_lazyPrimaryKeyDictionary[resist_status_id] = value;
+			}
+			return value;
+		}
+		[global::OpenPCR.Migration("dd73b5f4-62c7-444b-bcec-27274365cfa6")]
+		private ResistData _SelectOne(int resist_status_id)
+		{
+			throw new global::OpenPCR.OutOfBoundaryException("Elements.Data.MasterResistData._SelectOne SQLite query production and ORM mapping");
+		}
+		public override void Unload()
+		{
+			_lazyPrimaryKeyDictionary = null;
+		}
+	}
+}

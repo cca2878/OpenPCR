@@ -1,0 +1,98 @@
+{
+  "Schema": "openpcr-battle-clock/v1",
+  "InitialFrame": {
+    "Time": {
+      "Count": 1000,
+      "Numerator": 60,
+      "Denominator": 1
+    },
+    "DeltaTime": {
+      "Count": 0,
+      "Numerator": 60,
+      "Denominator": 1
+    },
+    "UnscaledTime": {
+      "Count": 1000,
+      "Numerator": 60,
+      "Denominator": 1
+    },
+    "UnscaledDeltaTime": {
+      "Count": 0,
+      "Numerator": 60,
+      "Denominator": 1
+    },
+    "FrameCount": 1000
+  },
+  "InitialTimeScale": 1,
+  "Updates": [
+    {
+      "Time": {
+        "Count": 1001,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "DeltaTime": {
+        "Count": 1,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "UnscaledTime": {
+        "Count": 1001,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "UnscaledDeltaTime": {
+        "Count": 1,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "FrameCount": 1001
+    },
+    {
+      "Time": {
+        "Count": 1001,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "DeltaTime": {
+        "Count": 0,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "UnscaledTime": {
+        "Count": 1002,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "UnscaledDeltaTime": {
+        "Count": 1,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "FrameCount": 1002
+    },
+    {
+      "Time": {
+        "Count": 1003,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "DeltaTime": {
+        "Count": 2,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "UnscaledTime": {
+        "Count": 1003,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "UnscaledDeltaTime": {
+        "Count": 1,
+        "Numerator": 60,
+        "Denominator": 1
+      },
+      "FrameCount": 1003
+    }
+  ]
+}

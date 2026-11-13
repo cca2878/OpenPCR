@@ -1,0 +1,808 @@
+{
+  "cases": [
+    {
+      "count": 0,
+      "numerator": 0,
+      "denominator": 0,
+      "valueBits": 0
+    },
+    {
+      "count": -1,
+      "numerator": 0,
+      "denominator": 1,
+      "valueBits": 2147483648
+    },
+    {
+      "count": 1,
+      "numerator": 30,
+      "denominator": 1,
+      "valueBits": 1023969417
+    },
+    {
+      "count": -1,
+      "numerator": 30,
+      "denominator": 1,
+      "valueBits": 3171453065
+    },
+    {
+      "count": 9223372036854775807,
+      "numerator": 4294967295,
+      "denominator": 4294967295,
+      "valueBits": 1593835520
+    },
+    {
+      "count": -9223372036854775808,
+      "numerator": 1,
+      "denominator": 4294967295,
+      "valueBits": 4009754624
+    },
+    {
+      "count": -8501677047436917177,
+      "numerator": 345973374,
+      "denominator": 2053221439,
+      "valueBits": 3761179743
+    },
+    {
+      "count": 3939667971245800754,
+      "numerator": 2905510392,
+      "denominator": 274328737,
+      "valueBits": 1554329638
+    },
+    {
+      "count": -1503492019911991545,
+      "numerator": 344209643,
+      "denominator": 285849244,
+      "valueBits": 3716849325
+    },
+    {
+      "count": -165164082647959426,
+      "numerator": 2875231073,
+      "denominator": 414072286,
+      "valueBits": 3668509246
+    },
+    {
+      "count": 4603838700163373458,
+      "numerator": 888459348,
+      "denominator": 297065296,
+      "valueBits": 1571481258
+    },
+    {
+      "count": 2139494584341522622,
+      "numerator": 2000574599,
+      "denominator": 2718571531,
+      "valueBits": 1579246571
+    },
+    {
+      "count": -4771495789044104117,
+      "numerator": 294468435,
+      "denominator": 2334487303,
+      "valueBits": 3758308747
+    },
+    {
+      "count": -4805562535487393423,
+      "numerator": 881025169,
+      "denominator": 3275059459,
+      "valueBits": 3749177639
+    },
+    {
+      "count": 4722636806898847213,
+      "numerator": 2636502121,
+      "denominator": 497356941,
+      "valueBits": 1564856651
+    },
+    {
+      "count": 151988217439016893,
+      "numerator": 4255830233,
+      "denominator": 2604172807,
+      "valueBits": 1537553592
+    },
+    {
+      "count": -1922005408011053823,
+      "numerator": 2234418619,
+      "denominator": 2235462808,
+      "valueBits": 3721755701
+    },
+    {
+      "count": 6117631857551216011,
+      "numerator": 461107647,
+      "denominator": 665375746,
+      "valueBits": 1593115812
+    },
+    {
+      "count": -6312630211366001633,
+      "numerator": 413691747,
+      "denominator": 141384361,
+      "valueBits": 3723462038
+    },
+    {
+      "count": -5736951479671155209,
+      "numerator": 4153581560,
+      "denominator": 3985891234,
+      "valueBits": 3734556101
+    },
+    {
+      "count": -6723933131997352332,
+      "numerator": 1900272092,
+      "denominator": 2367991079,
+      "valueBits": 3739783105
+    },
+    {
+      "count": -313344781050986001,
+      "numerator": 268669719,
+      "denominator": 1446838144,
+      "valueBits": 3720042347
+    },
+    {
+      "count": -3394085331789838150,
+      "numerator": 3237223381,
+      "denominator": 3189962174,
+      "valueBits": 3728320688
+    },
+    {
+      "count": 8421615771854947745,
+      "numerator": 2891567097,
+      "denominator": 3549627645,
+      "valueBits": 1594849451
+    },
+    {
+      "count": -2162984871548369235,
+      "numerator": 336564228,
+      "denominator": 1767435430,
+      "valueBits": 3743261248
+    },
+    {
+      "count": 4383583207868980157,
+      "numerator": 3250430001,
+      "denominator": 1936767428,
+      "valueBits": 1578171938
+    },
+    {
+      "count": 5334165046454287278,
+      "numerator": 115976525,
+      "denominator": 1072685921,
+      "valueBits": 1613441965
+    },
+    {
+      "count": -8651889659814373370,
+      "numerator": 96517379,
+      "denominator": 3415996892,
+      "valueBits": 3783576683
+    },
+    {
+      "count": -5504950062404448105,
+      "numerator": 1417117928,
+      "denominator": 4013656447,
+      "valueBits": 3747110936
+    },
+    {
+      "count": 913359959396972271,
+      "numerator": 626510751,
+      "denominator": 972952986,
+      "valueBits": 1570601462
+    },
+    {
+      "count": 5112377217271192778,
+      "numerator": 2981249408,
+      "denominator": 4187385739,
+      "valueBits": 1590119944
+    },
+    {
+      "count": 5445786001913826307,
+      "numerator": 1977343761,
+      "denominator": 1799054686,
+      "valueBits": 1586070963
+    },
+    {
+      "count": -5243757621186488369,
+      "numerator": 1671404376,
+      "denominator": 847133750,
+      "valueBits": 3725822158
+    },
+    {
+      "count": 309446101231542221,
+      "numerator": 702961297,
+      "denominator": 3116334637,
+      "valueBits": 1570262405
+    },
+    {
+      "count": 4875509997804186560,
+      "numerator": 53511543,
+      "denominator": 3061533101,
+      "valueBits": 1634857274
+    },
+    {
+      "count": -7579274127750844015,
+      "numerator": 174171700,
+      "denominator": 66974107,
+      "valueBits": 3726756060
+    },
+    {
+      "count": 5388468798019745707,
+      "numerator": 2442322046,
+      "denominator": 3675713159,
+      "valueBits": 1591809737
+    },
+    {
+      "count": -8059867543086077598,
+      "numerator": 2149963845,
+      "denominator": 2830923179,
+      "valueBits": 3742582731
+    },
+    {
+      "count": -2297040825492283431,
+      "numerator": 1909109088,
+      "denominator": 846614522,
+      "valueBits": 3714199392
+    },
+    {
+      "count": -3589212191348027984,
+      "numerator": 2850713159,
+      "denominator": 2829408079,
+      "valueBits": 3729113236
+    },
+    {
+      "count": -418960182564601886,
+      "numerator": 3315149075,
+      "denominator": 1511817442,
+      "valueBits": 3693720049
+    },
+    {
+      "count": -8750675140364213942,
+      "numerator": 1283572696,
+      "denominator": 2527484120,
+      "valueBits": 3748602029
+    },
+    {
+      "count": -8002251415746900780,
+      "numerator": 1841814569,
+      "denominator": 3734528710,
+      "valueBits": 3747687702
+    },
+    {
+      "count": 2070615551865556451,
+      "numerator": 1528488987,
+      "denominator": 355588568,
+      "valueBits": 1557523455
+    },
+    {
+      "count": -4357224015748960081,
+      "numerator": 315361987,
+      "denominator": 3372928278,
+      "valueBits": 3760303920
+    },
+    {
+      "count": -1706541724863531609,
+      "numerator": 3479604181,
+      "denominator": 2932568360,
+      "valueBits": 3718229402
+    },
+    {
+      "count": 3266897769482607039,
+      "numerator": 2976274207,
+      "denominator": 3703795104,
+      "valueBits": 1583459749
+    },
+    {
+      "count": -6691010204101066135,
+      "numerator": 437954758,
+      "denominator": 2429736695,
+      "valueBits": 3758148153
+    },
+    {
+      "count": -3731370605875943118,
+      "numerator": 2172146135,
+      "denominator": 2855510335,
+      "valueBits": 3733464590
+    },
+    {
+      "count": 512569243821446942,
+      "numerator": 3234187459,
+      "denominator": 2329643064,
+      "valueBits": 1554249379
+    },
+    {
+      "count": 8490737782864920225,
+      "numerator": 3480838385,
+      "denominator": 1039513125,
+      "valueBits": 1577894385
+    },
+    {
+      "count": -2902376211325393562,
+      "numerator": 2219096186,
+      "denominator": 396954320,
+      "valueBits": 3706097652
+    },
+    {
+      "count": -2022231805821578353,
+      "numerator": 2907480950,
+      "denominator": 4095455082,
+      "valueBits": 3726516127
+    },
+    {
+      "count": -7041964134241387883,
+      "numerator": 2968898105,
+      "denominator": 499797299,
+      "valueBits": 3716390202
+    },
+    {
+      "count": 2763309999204734229,
+      "numerator": 3170222534,
+      "denominator": 3989369993,
+      "valueBits": 1581320098
+    },
+    {
+      "count": 1719677437038026843,
+      "numerator": 3806647336,
+      "denominator": 124396142,
+      "valueBits": 1531422375
+    },
+    {
+      "count": -6785147011528173178,
+      "numerator": 2848102426,
+      "denominator": 4250380600,
+      "valueBits": 3742139967
+    },
+    {
+      "count": -5755183137669672665,
+      "numerator": 1793228035,
+      "denominator": 564945088,
+      "valueBits": 3720957021
+    },
+    {
+      "count": -5439924004530185877,
+      "numerator": 255466485,
+      "denominator": 3263107307,
+      "valueBits": 3765506807
+    },
+    {
+      "count": -3630456987854119645,
+      "numerator": 1612026287,
+      "denominator": 3100170753,
+      "valueBits": 3737241988
+    },
+    {
+      "count": -4774465678587923463,
+      "numerator": 1244022286,
+      "denominator": 3380608043,
+      "valueBits": 3744730821
+    },
+    {
+      "count": -1466413537674620097,
+      "numerator": 3886873459,
+      "denominator": 2025590046,
+      "valueBits": 3710496716
+    },
+    {
+      "count": -7506106555056756139,
+      "numerator": 3665927161,
+      "denominator": 1642097922,
+      "valueBits": 3728385137
+    },
+    {
+      "count": -4037221935121751573,
+      "numerator": 3458627026,
+      "denominator": 3806550747,
+      "valueBits": 3732318157
+    },
+    {
+      "count": 7660738937472937754,
+      "numerator": 3900850997,
+      "denominator": 4081656592,
+      "valueBits": 1591638989
+    },
+    {
+      "count": 5936243340235736193,
+      "numerator": 949752440,
+      "denominator": 2671100055,
+      "valueBits": 1600631101
+    },
+    {
+      "count": -4609594218418649624,
+      "numerator": 1179611234,
+      "denominator": 3363675857,
+      "valueBits": 3744885244
+    },
+    {
+      "count": 5834666966468988182,
+      "numerator": 3066941810,
+      "denominator": 2930699344,
+      "valueBits": 1587200032
+    },
+    {
+      "count": 2898079802532245093,
+      "numerator": 3751191137,
+      "denominator": 1124706074,
+      "valueBits": 1564536942
+    },
+    {
+      "count": -5827109383255885206,
+      "numerator": 1818872736,
+      "denominator": 2591934759,
+      "valueBits": 3739646408
+    },
+    {
+      "count": -3172768950220778107,
+      "numerator": 2119020304,
+      "denominator": 3955877976,
+      "valueBits": 3735315937
+    },
+    {
+      "count": 590915027002664110,
+      "numerator": 2585174518,
+      "denominator": 2872830938,
+      "valueBits": 1561448244
+    },
+    {
+      "count": -8888321297592787439,
+      "numerator": 2317125150,
+      "denominator": 28892696,
+      "valueBits": 3687112644
+    },
+    {
+      "count": 1451271234934604663,
+      "numerator": 1969333332,
+      "denominator": 1897173960,
+      "valueBits": 1570453564
+    },
+    {
+      "count": -7444850826631198462,
+      "numerator": 1575070870,
+      "denominator": 4223074109,
+      "valueBits": 3750396428
+    },
+    {
+      "count": -7164845467686046401,
+      "numerator": 1504530001,
+      "denominator": 645639096,
+      "valueBits": 3727338858
+    },
+    {
+      "count": -5719970786265992717,
+      "numerator": 2320062011,
+      "denominator": 4204506214,
+      "valueBits": 3742358339
+    },
+    {
+      "count": -7641018105689660449,
+      "numerator": 2533468330,
+      "denominator": 2102647885,
+      "valueBits": 3736077347
+    },
+    {
+      "count": -9049134239367009275,
+      "numerator": 3803594656,
+      "denominator": 3477518942,
+      "valueBits": 3739591119
+    },
+    {
+      "count": -2625793959254203654,
+      "numerator": 2383026660,
+      "denominator": 3954284858,
+      "valueBits": 3732004461
+    },
+    {
+      "count": -3191615349868839011,
+      "numerator": 2137149385,
+      "denominator": 2146220739,
+      "valueBits": 3727813657
+    },
+    {
+      "count": -6313662431295966116,
+      "numerator": 279135147,
+      "denominator": 1455160145,
+      "valueBits": 3756286618
+    },
+    {
+      "count": 3376700745718129362,
+      "numerator": 35582529,
+      "denominator": 341987648,
+      "valueBits": 1608593821
+    },
+    {
+      "count": 194469712078610564,
+      "numerator": 428501822,
+      "denominator": 3177407088,
+      "valueBits": 1570773186
+    },
+    {
+      "count": -5646186200310314671,
+      "numerator": 3335009792,
+      "denominator": 3365671498,
+      "valueBits": 3734906729
+    },
+    {
+      "count": -3313223639249066506,
+      "numerator": 400381853,
+      "denominator": 1009132522,
+      "valueBits": 3739731846
+    },
+    {
+      "count": 8041939535075806657,
+      "numerator": 3732584755,
+      "denominator": 1102332911,
+      "valueBits": 1577309901
+    },
+    {
+      "count": 8656799247213236734,
+      "numerator": 1678255314,
+      "denominator": 1712376116,
+      "valueBits": 1593125077
+    },
+    {
+      "count": 4796266745714197838,
+      "numerator": 3566959939,
+      "denominator": 3357283367,
+      "valueBits": 1585092725
+    },
+    {
+      "count": 8826475212838728371,
+      "numerator": 578498789,
+      "denominator": 3613155414,
+      "valueBits": 1614758763
+    },
+    {
+      "count": 9131839467649151637,
+      "numerator": 241541545,
+      "denominator": 128035897,
+      "valueBits": 1585863283
+    },
+    {
+      "count": 7531572132302808383,
+      "numerator": 2341524062,
+      "denominator": 2647318773,
+      "valueBits": 1592547306
+    },
+    {
+      "count": 3575209356780472330,
+      "numerator": 1246261974,
+      "denominator": 740599757,
+      "valueBits": 1575739535
+    },
+    {
+      "count": 7084514281051581492,
+      "numerator": 3083396709,
+      "denominator": 4133503466,
+      "valueBits": 1594084633
+    },
+    {
+      "count": -594603777388921225,
+      "numerator": 2202963486,
+      "denominator": 309931001,
+      "valueBits": 3683948882
+    },
+    {
+      "count": 3062234912820931919,
+      "numerator": 3969063450,
+      "denominator": 3668995198,
+      "valueBits": 1578967812
+    },
+    {
+      "count": -5093536002614210089,
+      "numerator": 4063173258,
+      "denominator": 3915801960,
+      "valueBits": 3733470995
+    },
+    {
+      "count": -229292781519565362,
+      "numerator": 2541511086,
+      "denominator": 3014977487,
+      "valueBits": 3698431890
+    },
+    {
+      "count": -8165616266813122284,
+      "numerator": 3319338923,
+      "denominator": 4115776193,
+      "valueBits": 3742139068
+    },
+    {
+      "count": 924274798954225013,
+      "numerator": 3801369332,
+      "denominator": 1850174921,
+      "valueBits": 1556596414
+    },
+    {
+      "count": -4737010740878377967,
+      "numerator": 4098005446,
+      "denominator": 4087160453,
+      "valueBits": 3733135721
+    },
+    {
+      "count": 6245988717674405592,
+      "numerator": 937091817,
+      "denominator": 252134175,
+      "valueBits": 1572508680
+    },
+    {
+      "count": 8465043967418077715,
+      "numerator": 498685791,
+      "denominator": 2610902917,
+      "valueBits": 1612301171
+    },
+    {
+      "count": 9208506910060162492,
+      "numerator": 36978091,
+      "denominator": 2840553973,
+      "valueBits": 1645830919
+    },
+    {
+      "count": -1324396053515766986,
+      "numerator": 1425000601,
+      "denominator": 251039570,
+      "valueBits": 3696179706
+    },
+    {
+      "count": -8924355719965399493,
+      "numerator": 2815864673,
+      "denominator": 550969288,
+      "valueBits": 3720469969
+    },
+    {
+      "count": 9078836013579488297,
+      "numerator": 539437486,
+      "denominator": 1462433175,
+      "valueBits": 1605028230
+    },
+    {
+      "count": 1608378254898094429,
+      "numerator": 3778048906,
+      "denominator": 2154611856,
+      "valueBits": 1565240284
+    },
+    {
+      "count": -3628850158886947565,
+      "numerator": 744967908,
+      "denominator": 1595021528,
+      "valueBits": 3738674751
+    },
+    {
+      "count": -4954762859395866962,
+      "numerator": 769583443,
+      "denominator": 400563790,
+      "valueBits": 3725535421
+    },
+    {
+      "count": 113288267210313847,
+      "numerator": 1283274541,
+      "denominator": 2778180170,
+      "valueBits": 1549391243
+    },
+    {
+      "count": 6175326916063678228,
+      "numerator": 750530999,
+      "denominator": 845430035,
+      "valueBits": 1589711469
+    },
+    {
+      "count": -4607266644730802687,
+      "numerator": 566953343,
+      "denominator": 4048278443,
+      "valueBits": 3756279340
+    },
+    {
+      "count": 4718833126571360438,
+      "numerator": 3417433447,
+      "denominator": 1768973410,
+      "valueBits": 1577555895
+    },
+    {
+      "count": -4247389718563768027,
+      "numerator": 1832123192,
+      "denominator": 1422464786,
+      "valueBits": 3728150246
+    },
+    {
+      "count": -5232031551400474502,
+      "numerator": 3935801907,
+      "denominator": 447085062,
+      "valueBits": 3708024760
+    },
+    {
+      "count": 1040954882608461600,
+      "numerator": 2958519905,
+      "denominator": 3076588327,
+      "valueBits": 1567644888
+    },
+    {
+      "count": 1709413695566764761,
+      "numerator": 2696981643,
+      "denominator": 115749931,
+      "valueBits": 1535267486
+    },
+    {
+      "count": 9204203891572494609,
+      "numerator": 1954169837,
+      "denominator": 1903301638,
+      "valueBits": 1593364840
+    },
+    {
+      "count": 5162782430409011470,
+      "numerator": 3892365988,
+      "denominator": 1585902721,
+      "valueBits": 1575586212
+    },
+    {
+      "count": -7992359710569232657,
+      "numerator": 633962857,
+      "denominator": 4003421049,
+      "valueBits": 3761183568
+    },
+    {
+      "count": -3725014131057916211,
+      "numerator": 3331773324,
+      "denominator": 2421412297,
+      "valueBits": 3726002100
+    },
+    {
+      "count": -6228416768243505793,
+      "numerator": 3568467201,
+      "denominator": 2321694707,
+      "valueBits": 3730895508
+    },
+    {
+      "count": -6744608022820348838,
+      "numerator": 3770967031,
+      "denominator": 1186092705,
+      "valueBits": 3723199954
+    },
+    {
+      "count": -199691579697352279,
+      "numerator": 2938434664,
+      "denominator": 306527136,
+      "valueBits": 3667133335
+    },
+    {
+      "count": 2419937096628100195,
+      "numerator": 676557523,
+      "denominator": 462633558,
+      "valueBits": 1572321092
+    },
+    {
+      "count": 1490554793937857238,
+      "numerator": 1973006131,
+      "denominator": 2430041402,
+      "valueBits": 1573638531
+    },
+    {
+      "count": -5583457452800365660,
+      "numerator": 3408250008,
+      "denominator": 2391635776,
+      "valueBits": 3730407023
+    },
+    {
+      "count": -2677220382035672587,
+      "numerator": 408311072,
+      "denominator": 2281796632,
+      "valueBits": 3746537801
+    },
+    {
+      "count": 4864842291833488802,
+      "numerator": 26100450,
+      "denominator": 4028582975,
+      "valueBits": 1646449269
+    },
+    {
+      "count": -675694018820890934,
+      "numerator": 827264779,
+      "denominator": 816726444,
+      "valueBits": 3709083514
+    },
+    {
+      "count": -5542280541850677912,
+      "numerator": 2315365264,
+      "denominator": 1935654225,
+      "valueBits": 3732969999
+    },
+    {
+      "count": 8040809640441601885,
+      "numerator": 3687090398,
+      "denominator": 2992060519,
+      "valueBits": 1588927370
+    },
+    {
+      "count": 3998043534244047826,
+      "numerator": 2642421679,
+      "denominator": 3724567305,
+      "valueBits": 1587308954
+    }
+  ]
+}

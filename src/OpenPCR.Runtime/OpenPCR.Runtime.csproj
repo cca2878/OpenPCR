@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Shared runtime APIs and their executable implementation. -->
+  <PropertyGroup>
+    <AssemblyName>OpenPCR.Runtime</AssemblyName>
+    <RootNamespace></RootNamespace>
+    <!-- 沿用被替身的 Unity 模块程序集的 0.0.0.0 版本身份；本仓自有程序集用 SDK 默认版本。 -->
+    <AssemblyVersion>0.0.0.0</AssemblyVersion>
+    <FileVersion>0.0.0.0</FileVersion>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <LangVersion>9.0</LangVersion>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../OpenPCR.Support/OpenPCR.Support.csproj" />
+    <ProjectReference Include="../../tools/OpenPCR.Transcription/OpenPCR.Transcription.csproj" OutputItemType="Analyzer" ReferenceOutputAssembly="false" Condition="'$(OpenPcrAuditMode)' == 'Public'" />
+  </ItemGroup>
+</Project>

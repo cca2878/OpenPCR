@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><OutputType>Exe</OutputType><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../../src/OpenPCR.Host/OpenPCR.Host.csproj" />
+    <!-- Single-request CLI: let hot methods tier up without the startup call-counting delay. -->
+    <RuntimeHostConfigurationOption Include="System.Runtime.TieredCompilation.CallCountingDelayMs" Value="0" Condition="'$(Configuration)' == 'Release' Or '$(Configuration)' == 'ReleaseOptimized'" />
+    <!-- Resident worker: compact the GC heap sooner; each battle's preparation and scene garbage otherwise lets the heap grow to several times its live size. -->
+    <RuntimeHostConfigurationOption Include="System.GC.ConserveMemory" Value="7" />
+  </ItemGroup>
+</Project>

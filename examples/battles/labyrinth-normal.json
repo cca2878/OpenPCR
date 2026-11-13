@@ -1,0 +1,125 @@
+{
+  "Schema": "openpcr-battle/v2",
+  "MasterVersion": "202611031924",
+  "Player": {
+    "user_info": {
+      "team_level": 100
+    },
+    "unit_list": [
+      {
+        "id": 100101,
+        "unit_rarity": 3,
+        "unit_level": 100,
+        "promotion_level": 1,
+        "union_burst": [
+          {
+            "skill_id": 1001001,
+            "skill_level": 100,
+            "slot_number": 0
+          }
+        ],
+        "main_skill": [
+          {
+            "skill_id": 1001002,
+            "skill_level": 100,
+            "slot_number": 0
+          },
+          {
+            "skill_id": 1001003,
+            "skill_level": 100,
+            "slot_number": 1
+          }
+        ],
+        "ex_skill": [
+          {
+            "skill_id": 1001501,
+            "skill_level": 100,
+            "slot_number": 0
+          }
+        ],
+        "free_skill": [],
+        "equip_slot": [],
+        "battle_rarity": 0,
+        "exceed_stage": 0,
+        "unique_equip_slot": [],
+        "ex_equip_slot": [],
+        "cb_ex_equip_slot": [],
+        "resist_status_id": 0,
+        "resist_variation_id": 0
+      }
+    ],
+    "read_story_ids": [],
+    "unit_role_list": [],
+    "ini_setting": {
+      "battle_log_type": {
+        "miss": 1,
+        "set_damage": 1,
+        "set_abnormal": 1,
+        "set_recovery": 1,
+        "set_buff_debuff": 1,
+        "set_state": 1,
+        "button_tap": 1,
+        "set_energy": 1,
+        "damage_charge": 1,
+        "give_value_additional": 1,
+        "give_value_multiply": 1,
+        "wave_end_hp": 1,
+        "wave_end_damage_amount": 1,
+        "break": 1,
+        "suspend_count": 1,
+        "suspend": 1
+      },
+      "log_barrier": {
+        "coefficient": 10000000,
+        "threshold": 10000000
+      }
+    },
+    "errm": 100,
+    "Releases": {
+      "ChangeRarity": true,
+      "SkillLevelSync": false,
+      "SlipDamageLogBarrier": false,
+      "KnightEnhance": false
+    },
+    "user_ex_equip": []
+  },
+  "Settings": {
+    "FrameRate": 30,
+    "ApplyOtherUserSkins": false,
+    "ResetSkillReserveEveryTime": false,
+    "AdvantageAndBreakdownBonusShows": false,
+    "MultiTargetFirst": false,
+    "TalentFormationBonusFirst": false,
+    "PlayMultiTargetAppearance": false
+  },
+  "Battles": [
+    {
+      "Party": [
+        100101,
+        0,
+        0,
+        0,
+        0
+      ],
+      "Opening": {
+        "Auto": false,
+        "Speed": 1,
+        "SetUnits": []
+      },
+      "Seed": 12345
+    }
+  ],
+  "Labyrinth": {
+    "quest_id": 770110101,
+    "difficulty": 1,
+    "alpha_rupee": 0,
+    "unit_list": [
+      {
+        "unit_id": 100101,
+        "unit_type": 1
+      }
+    ],
+    "relic_list": [],
+    "labyrinth_enhance_node_list": []
+  }
+}

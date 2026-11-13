@@ -1,0 +1,20 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+    <!-- Parallel workers allocate heavily; workstation GC pauses all of them and keeps extra jobs from helping. -->
+    <ServerGarbageCollection>true</ServerGarbageCollection>
+  </PropertyGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="OpenPCR.PrefabExtractor.Tests" />
+    <PackageReference Include="AssetsTools.NET" />
+    <PackageReference Include="Microsoft.Data.Sqlite" />
+    <PackageReference Include="SQLitePCLRaw.bundle_e_sqlite3" />
+    <PackageReference Include="Google.Protobuf" />
+    <PackageReference Include="Grpc.Tools" PrivateAssets="all" />
+    <Protobuf Include="../../src/OpenPCR.Host/Schema/unit_prefab.proto" GrpcServices="None" Link="Schema/unit_prefab.proto" />
+    <Protobuf Include="../../src/OpenPCR.Host/Schema/spine_animation.proto" GrpcServices="None" Link="Schema/spine_animation.proto" />
+    <EmbeddedResource Include="Tables.json" />
+  </ItemGroup>
+</Project>

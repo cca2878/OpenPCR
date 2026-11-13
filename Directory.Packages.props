@@ -1,0 +1,15 @@
+<Project>
+  <!-- 全仓 NuGet 版本的唯一来源；各项目的 PackageReference 不写 Version。 -->
+  <PropertyGroup>
+    <ManagePackageVersionsCentrally>true</ManagePackageVersionsCentrally>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageVersion Include="AssetsTools.NET" Version="3.0.5" />
+    <PackageVersion Include="Google.Protobuf" Version="3.33.0" />
+    <PackageVersion Include="Grpc.Tools" Version="2.76.0" />
+    <!-- 分析器在编译器进程内加载，引用的 Roslyn 不能高于 global.json 所选 SDK 自带的编译器版本。 -->
+    <PackageVersion Include="Microsoft.CodeAnalysis.CSharp" Version="4.14.0" />
+    <PackageVersion Include="Microsoft.Data.Sqlite" Version="10.0.0" />
+    <PackageVersion Include="SQLitePCLRaw.bundle_e_sqlite3" Version="2.1.13" />
+  </ItemGroup>
+</Project>

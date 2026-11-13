@@ -1,0 +1,13 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <Nullable>enable</Nullable>
+    <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- 引用 Host 只为把实现程序集（含私有成员）复制到输出目录；被检查的源码在运行时从仓库读取。 -->
+    <ProjectReference Include="../../src/OpenPCR.Host/OpenPCR.Host.csproj" />
+    <!-- 这里要解析用当前 SDK 语言版本写的源码，所以不沿用分析器的 Roslyn 版本。 -->
+    <PackageReference Include="Microsoft.CodeAnalysis.CSharp" VersionOverride="5.9.0" />
+  </ItemGroup>
+</Project>

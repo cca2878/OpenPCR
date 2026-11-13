@@ -1,0 +1,82 @@
+// Spine 动画时间轴 —— `cysp_pose.timelines` 与 `mode_spine_pose.timelines` 两列。
+//
+// ⭐ **本文件是 schema 的唯一来源**：两列的 blob 是这里定义的 `SpineAnimation`
+//    序列化结果再经 zlib（RFC 1950）压缩。提取器直接链接本文件，不另复制。
+//
+// 一条消息对应一段动画，时间轴顺序即原资源的读取顺序。每条时间轴的帧数据按列存放：
+// 帧时间、数值、曲线各占一个数组，下标按帧递增。库内保留原资源的全部帧数据；
+// 读取方自行决定为哪些时间轴建出帧，其余只取种类、索引和帧数。
+// 浮点数只出现在 repeated 字段里，packed 编码逐位保留，包括负零。
+// 字段号一经使用不得改变；读取方按 SpineAnimation.format_version 检查产品格式。
+
+syntax = "proto3";
+
+package pcr.prefab;
+
+enum SpineTimelineKind {
+  SPINE_TIMELINE_KIND_UNSPECIFIED = 0;
+  SPINE_TIMELINE_KIND_ATTACHMENT = 1;
+  SPINE_TIMELINE_KIND_COLOR = 2;
+  SPINE_TIMELINE_KIND_TWO_COLOR = 3;
+  SPINE_TIMELINE_KIND_ROTATE = 4;
+  SPINE_TIMELINE_KIND_TRANSLATE = 5;
+  SPINE_TIMELINE_KIND_SCALE = 6;
+  SPINE_TIMELINE_KIND_SHEAR = 7;
+  SPINE_TIMELINE_KIND_IK_CONSTRAINT = 8;
+  SPINE_TIMELINE_KIND_TRANSFORM_CONSTRAINT = 9;
+  SPINE_TIMELINE_KIND_PATH_CONSTRAINT_POSITION = 10;
+  SPINE_TIMELINE_KIND_PATH_CONSTRAINT_SPACING = 11;
+  SPINE_TIMELINE_KIND_PATH_CONSTRAINT_MIX = 12;
+  SPINE_TIMELINE_KIND_DEFORM = 13;
+  SPINE_TIMELINE_KIND_DRAW_ORDER = 14;
+  SPINE_TIMELINE_KIND_EVENT = 15;
+}
+
+message SpineTimeline {
+  SpineTimelineKind kind = 1;
+
+  // Attachment／Color／TwoColor：slot；Rotate／Translate／Scale／Shear：bone；
+  // 各 Constraint：约束序号；Deform：skin；DrawOrder／Event：0。
+  int32 index = 2;
+
+  // 每帧一个时间；帧数即本数组长度。
+  repeated float times = 3;
+
+  // 带曲线的种类（Attachment、DrawOrder、Event 之外）：第 0 至 n-2 帧各一个字节，
+  // 0 线性、1 阶梯、2 贝塞尔；末帧在原资源里没有曲线。
+  bytes curve_types = 4;
+  // 每个贝塞尔曲线四个参数，按帧顺序连续存放。
+  repeated float curve_params = 5;
+
+  // 每帧定宽的浮点数值，帧主序：Rotate 1；Translate／Scale／Shear 2；
+  // TransformConstraint 4；PathConstraintPosition／Spacing 1；PathConstraintMix 2；
+  // IkConstraint 1（mix）；Event 1（float 值）。数值为原资源读数，未做缩放。
+  repeated float values = 6;
+
+  // Color 每帧 1 个、TwoColor 每帧 2 个原始 32 位颜色。
+  repeated sfixed32 colors = 7;
+
+  // IkConstraint：每帧 bend direction；Event：每帧 event 序号与 int 值；Deform：每帧起始偏移。
+  repeated sint32 integers = 8;
+
+  // Attachment：每帧附件名；Event：每帧字符串。原资源为空串（null）的位置在
+  // names_absent 的同一下标标记为 true，names 里对应项为空串。
+  repeated string names = 9;
+  repeated bool names_absent = 10;
+
+  // Deform：目标 slot 与附件名。
+  int32 deform_slot = 11;
+  string deform_attachment = 12;
+
+  // Deform：每帧顶点数；DrawOrder：每帧偏移对数。
+  repeated int32 counts = 13;
+  // Deform：各帧顶点连续存放。
+  repeated float vertices = 14;
+  // DrawOrder：各帧的 (slot, offset) 对连续存放，按原 varint 的无符号值。
+  repeated uint32 draw_offsets = 15;
+}
+
+message SpineAnimation {
+  uint32 format_version = 1;
+  repeated SpineTimeline timelines = 2;
+}

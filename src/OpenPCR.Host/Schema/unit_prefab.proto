@@ -1,0 +1,365 @@
+// 战斗单位 prefab 的树形数据 —— `all_battleunitprefab_<prefab_id>.unity3d`。
+//
+// ⭐ **本文件是 schema 的唯一来源**：sqlite 只存 `(prefab_id, blob)`，
+//    blob 是这里定义的 `UnitPrefab` 序列化结果。换语言、换架构，同一份
+//    .proto 就是同一份 schema。
+//
+// 数据按单位保存为树，供读取方按需装配整个 prefab，避免逐层数据库查询。
+// float / double 按字段所需位宽区分；PPtr 身份使用完整有符号 64 位值。
+// 低基数字段使用 enum，重复子结构保留原列表顺序。
+// 字段号一经使用不得改变；读取方按 UnitPrefab.format_version 检查必需产品格式。
+
+syntax = "proto3";
+
+package pcr.prefab;
+
+// ── 低基数字符串 → enum ────────────────────────────────────────────────
+// ⚠ 名字照 native 的字段名（`UnitActionController` 的列表名），不改写。
+
+enum SlotName {
+  SLOT_NAME_UNSPECIFIED = 0;
+  ATTACK_DETAIL = 1;                 // AttackDetail（占位槽，ordinal = -1）
+  ATTACK = 2;
+  UNION_BURST_LIST = 3;
+  MAIN_SKILL_LIST = 4;
+  SPECIAL_SKILL_LIST = 5;
+  SPECIAL_SKILL_EVOLUTION_LIST = 6;
+  UNION_BURST_EVOLUTION_LIST = 7;
+  MAIN_SKILL_EVOLUTION_LIST = 8;
+  SUB_UNION_BURST_LIST = 9;
+  ANNIHILATION = 10;
+  OVERRIDE_SKILL_LIST = 11;          // 子槽（自引用）
+}
+
+enum PresetEffectSlot {
+  PRESET_EFFECT_SLOT_UNSPECIFIED = 0;
+  GAME_START = 1;
+  DIE = 2;
+  DAMAGE = 3;
+  SUMMON = 4;
+  IDLE = 5;
+  AURA = 6;
+}
+
+// ── 叶子结构 ───────────────────────────────────────────────────────────
+
+// `PPtr<T>`：Unity 的对象引用。
+// ⚠ `path_id` 是满 64 位有符号哈希 ⇒ sint64。
+message Pptr {
+  int32 file_id = 1;
+  sint64 path_id = 2;
+}
+
+// `Keyframe`（`AnimationCurve.m_Curve` 的一项）。
+message CurveKey {
+  float time = 1;
+  float value = 2;
+  float in_slope = 3;
+  float out_slope = 4;
+  float in_weight = 5;
+  float out_weight = 6;
+  int32 weighted_mode = 7;
+}
+
+// `AnimationCurve`。
+// ⚠ **没有关键帧就整条不存**：`Evaluate` 恒返回 0，包络不参与求值。
+//   旧的关系表里 98.3% 是这种空曲线。
+message Curve {
+  int32 pre_infinity = 1;
+  int32 post_infinity = 2;
+  int32 rotation_order = 3;
+  repeated CurveKey keys = 4;
+}
+
+// `ExecTimeForPrefab` 的一项。
+message ExecTime {
+  float time = 1;
+  int32 damage_num_type = 2;
+  // ⚠ **f64**——与同结构里的 `damage_num_scale`(f32) 位宽不同，照 native。
+  double weight = 3;
+  float damage_num_scale = 4;
+}
+
+// `ExecTimeCombo` 的一项。
+message ExecTimeCombo {
+  float start_time = 1;
+  float offset_time = 2;
+  float weight = 3;                  // ⚠ 这个是 f32，与 ExecTime.weight 不同
+  int32 count = 4;
+  int32 interpolation_type = 5;
+  Curve curve = 6;
+}
+
+// `ShakeEffect`。
+message ShakeEffect {
+  int32 shake_type = 1;
+  float start_time = 2;
+  float duration = 3;
+  int32 target_motion = 4;
+  float start_amplitude = 5;
+  float end_amplitude = 6;
+  float start_frequency = 7;
+  float end_frequency = 8;
+  float rotation = 9;
+}
+
+// ── 树节点 ─────────────────────────────────────────────────────────────
+
+// `ActionDetail`。
+message ActionDetail {
+  bool visible = 1;
+  int32 action_id = 2;
+  repeated ExecTime exec_times = 3;
+  repeated ExecTimeCombo exec_time_combos = 4;
+  repeated SkillEffect action_effects = 5;
+  repeated SkillEffect action_sub_effects = 6;
+  bool effects_extracted = 7; // audit marker: an old blob is not an empty list
+}
+
+// `ActionParameterOnPrefab`。
+message ActionParameter {
+  bool visible = 1;
+  int32 action_type = 2;
+  int32 effect_type = 3;
+  bool is_excluded_from_blackout_target = 4;
+  Curve knock_curve = 5;
+  Curve knock_down_curve = 6;
+  repeated ActionDetail details = 7;
+}
+
+// `NormalSkillEffect`。
+// ⚠ `fire_arm_end_effects` 是**同类型的子节点**（递归），不是摊平的路由表：
+//   保留这条父子边才能复现 native 的递归 `UpdateEffectRunTimeData`。
+message SkillEffect {
+  Pptr prefab = 1;
+  Pptr prefab_left = 2;
+  bool is_reaction = 3;
+  bool target_action_is_reflexive = 4;
+  int32 target_action_index = 5;
+  int32 target_action_id = 6;
+  int32 fire_action_id = 7;          // ⚠ 缺省是 -1，不是 0
+  int32 target_motion_index = 8;
+  int32 effect_behavior = 9;
+  int32 effect_target = 10;
+  int32 target_bone = 11;
+  int32 firearm_end_target = 12;
+  int32 firearm_end_target_bone = 13;
+  int32 track_type = 14;
+  int32 track_dimension = 15;
+  string target_bone_name = 16;
+  bool track_rotation = 17;
+  bool destroy_on_enemy_dead = 18;
+  float center_y = 19;
+  float delta_y = 20;
+  bool track_target = 21;
+  float height = 22;
+  bool is_absolute_firearm = 23;
+  float absolute_fire_distance = 24;
+  int32 target_branch_id = 25;
+  bool play_with_cutin = 26;
+  repeated float exec_times = 27;
+  repeated ShakeEffect shake_effects = 28;
+  repeated SkillEffect fire_arm_end_effects = 29;   // 递归
+}
+
+// 一个技能槽。⚠ `override_skills` 是同类型子槽（自引用）。
+message SkillSlot {
+  SlotName slot_name = 1;
+  int32 ordinal = 2;                 // AttackDetail 占位槽是 -1
+  bool is_princess_form = 3;
+  int32 parameter_target = 4;
+  int32 skill_motion_type = 5;
+  float black_out_time = 6;
+  float cutin_skip_time = 7;
+  bool force_play_no_target = 8;
+  bool force_combo_damage = 9;
+  bool track_damage_num = 10;
+  bool pause_stop_state = 11;
+  // ⚠ 只有 AttackDetail 占位槽带这个值（原 schema 里是可空列）。
+  optional bool use_default_delay = 12;
+  repeated ActionParameter parameters = 13;
+  repeated SkillEffect effects = 14;
+  repeated SkillSlot override_skills = 15;          // 递归
+  // AttackDetail 槽直接挂一条 detail（不经 parameter）。
+  repeated ActionDetail direct_details = 16;
+  // `Skill.ShakeEffects` —— 施法时的镜头抖动。
+  // ⚠ 与 `SkillEffect.shake_effects` 是**不同层**的两组：这里挂在技能上，
+  //   那里挂在具体特效上。曾经被摊进一张 shake_effects 表用 owner 列区分，
+  //   现在各归各位。
+  repeated ShakeEffect shake_effects = 17;
+  // `Skill.PrincessSkillMovieDataList` —— 公主形态 UB 的分段表。
+  // ⭐ 条数 = `PrincessFormProcessor` 的段数 N（`++current > Count ⇒ finishSkill`）。
+  repeated PrincessSkillMovieData princess_skill_movie_data = 18;
+  repeated BlurEffectData blur_effects = 19;
+  bool blur_effects_extracted = 20;
+  repeated ChangeSortOrderData change_sort_datas = 21;
+  bool change_sort_datas_extracted = 22; // old blobs must not imply an empty list
+  // Presence distinguishes old extraction from a serialized disabled effect.
+  SlowEffect slow_effect = 23;
+  // BattleDefine.ZoomEffect; presence distinguishes old extraction from a disabled zoom.
+  ZoomEffect zoom_effect = 24;
+  // SkillBase.ScaleChangers, applied to blackout targets.
+  repeated ScaleChanger scale_changers = 25;
+  bool scale_changers_extracted = 26; // old blobs must not imply an empty list
+}
+
+// BattleDefine.ZoomEffect serialized fields in declaration order; enums keep their int32 values.
+message ZoomEffect {
+  bool enable = 1;
+  bool consider_screen_size = 2;
+  float start_delay = 3;
+  float start_duration = 4;
+  float duration = 5;
+  float end_duration = 6;
+  float to = 7;
+  int32 zoom_target = 8;
+  float offset_y = 9;
+  float offset_x = 10;
+  bool use_y_bottom = 11;
+  repeated ZoomEffectPlual zoom_effect_list = 12;
+  int32 start_easing_type = 13;
+  int32 end_easing_type = 14;
+  string bone_name = 15;
+}
+
+// BattleDefine.ZoomEffectPlual serialized fields in declaration order.
+message ZoomEffectPlual {
+  float start_duration = 1;
+  float duration = 2;
+  float to = 3;
+  float offset_x = 4;
+  float offset_y = 5;
+  int32 zoom_target = 6;
+  int32 start_easing_type = 7;
+  bool use_y_bottom = 8;
+  string bone_name = 9;
+}
+
+// Elements.ScaleChanger serialized fields in declaration order.
+message ScaleChanger {
+  float time = 1;
+  float scale = 2;
+  float duration = 3;
+  int32 easing = 4;
+}
+
+// BattleDefine.SlowEffect: authored stage durations and target playback scale.
+// Presence distinguishes a serialized zero from an incomplete older projection.
+message SlowEffect {
+  bool enable = 1;
+  float start_delay = 2;
+  float start_duration = 3;
+  float duration = 4;
+  float end_duration = 5;
+  optional float to = 6;
+}
+
+message ChangeSortOrderData {
+  int32 sort_type = 1;
+  float time = 2;
+}
+
+message BlurEffectData {
+  float start_time = 1;
+  float value = 2;
+  float start_duration = 3;
+  float duration = 4;
+  float end_duration = 5;
+}
+
+// `Elements.PrincessSkillMovieData`（`[Serializable]`，三个字段）。
+message PrincessSkillMovieData {
+  bool use_fade = 1;
+  float fade_start_time = 2;
+  float fade_duration = 3;
+}
+
+// `PrefabWithTime`（UnitCtrl 的九组预设特效之一项）。
+message PresetEffect {
+  Pptr prefab = 1;
+  Pptr prefab_left = 2;
+  float time = 3;
+  int32 summon_skill_index = 4;      // ⚠ 缺省是 -1
+  string target_bone_name = 5;
+  int32 effect_difficulty = 6;
+  bool is_track_rotation = 7;
+}
+
+message PresetEffectList {
+  PresetEffectSlot slot = 1;
+  repeated PresetEffect effects = 2;
+}
+
+message BossPartAttachment {
+  string target_slot_name = 1;
+  string target_attachment_name = 2;
+  string applied_slot_name = 3;
+  string applied_attachment_name = 4;
+}
+
+message BossPart {
+  float position_x = 1;
+  float position_y = 2;
+  float body_width_value = 3;
+  int32 part_index = 4;
+  int32 enemy_id = 5;
+  bool disable_start_break_effect = 6;
+  float break_effect_time = 7;
+  float break_effect_offset_y = 8;
+  float break_effect_size = 9;
+  float change_attachment_start_time = 10;
+  float change_attachment_end_time = 11;
+  repeated BossPartAttachment attachments = 12;
+}
+
+// `UnitCtrl` 的几何/开关字段。
+message Geometry {
+  float unit_appear_delay = 1;
+  float boss_appear_delay = 2;
+  float boss_delta_x = 3;
+  float boss_delta_y = 4;
+  // ⚠ 也是「这是不是 BOSS」的数据驱动判据（玩家与奖励敌人恒 0）。
+  float boss_body_width_offset = 5;
+  float scale = 6;
+  float battle_camera_size = 7;
+  float all_unit_center = 8;
+  bool use_target_cursor_over = 9;
+  float over_cursor_size = 10;
+  bool disable_flash = 11;
+  bool is_force_left_dir = 12;
+  bool boss_sort_is_back = 13;
+  bool is_game_start_depth_back = 14;
+  bool one_remaining_disable_effect = 15;
+}
+
+// ── 根 ─────────────────────────────────────────────────────────────────
+
+// `UnitCtrl` 自己的镜头抖动列表（不是技能的）。
+// ⚠ native 只有这三组（`gameStartShakes` / `dieShakes` / `damageShakes`），
+//   与九组 `PrefabWithTime` 特效不是一回事。
+enum UnitShakeSlot {
+  UNIT_SHAKE_SLOT_UNSPECIFIED = 0;
+  GAME_START_SHAKES = 1;
+  DIE_SHAKES = 2;
+  DAMAGE_SHAKES = 3;
+}
+
+message UnitShakeList {
+  UnitShakeSlot slot = 1;
+  repeated ShakeEffect shakes = 2;
+}
+
+message UnitPrefab {
+  int32 prefab_id = 1;
+  string source_sha256 = 2;
+  string unity_version = 3;
+  Geometry geometry = 4;
+  repeated PresetEffectList preset_effects = 5;
+  repeated BossPart boss_parts = 6;
+  // 顶层技能槽（AttackDetail 与各 SkillList）；子槽在 override_skills 里。
+  repeated SkillSlot slots = 7;
+  repeated UnitShakeList unit_shakes = 8;
+  // Payload revision; SQL prefab_meta.schema_version describes the outer tables.
+  // Version 1 requires the authored SlowEffect.To projection for every skill.
+  int32 format_version = 9;
+}

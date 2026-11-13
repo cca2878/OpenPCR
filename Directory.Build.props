@@ -1,0 +1,31 @@
+<Project>
+  <PropertyGroup>
+    <OpenPcrAuditMode Condition="'$(OpenPcrAuditMode)' == ''">Public</OpenPcrAuditMode>
+  </PropertyGroup>
+  <Import Project="$(MSBuildThisFileFullPath).user" Condition="'$(OpenPcrAuditMode)' == 'Private' and Exists('$(MSBuildThisFileFullPath).user')" />
+  <Import Project="$(OpenPcrBuildProps)" Condition="'$(OpenPcrAuditMode)' == 'Private' and '$(OpenPcrBuildProps)' != ''" />
+  <!-- 全仓公共编译设置。正常构建只使用仓库源码和 .NET / NuGet 依赖。 -->
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <Deterministic>true</Deterministic>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <!-- ReleaseOptimized: the same sources with OPENPCR_OPTIMIZED regions active, built beside Release. -->
+  <PropertyGroup Condition="'$(Configuration)' == 'ReleaseOptimized'">
+    <Optimize>true</Optimize>
+    <DefineConstants>$(DefineConstants);OPENPCR_OPTIMIZED</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(OpenPcrAuditMode)' == 'Public'">
+    <PathMap>$(MSBuildThisFileDirectory)=/_/</PathMap>
+    <EnableSourceLink>false</EnableSourceLink>
+    <EnableSourceControlManagerQueries>false</EnableSourceControlManagerQueries>
+    <IncludeSourceRevisionInInformationalVersion>false</IncludeSourceRevisionInInformationalVersion>
+  </PropertyGroup>
+
+</Project>

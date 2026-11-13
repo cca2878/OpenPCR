@@ -1,0 +1,13 @@
+# Generated build and editor outputs
+bin/
+obj/
+artifacts/
+*.user
+.vs/
+TestResults/
+core.*
+__pycache__/
+*.pyc
+
+# Local extensions are never part of a source distribution.
+/private/

@@ -1,0 +1,7 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors></PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="../OpenPCR.Engine/OpenPCR.Engine.csproj" />
+    <ProjectReference Include="../OpenPCR.Support/OpenPCR.Support.csproj" />
+  </ItemGroup>
+</Project>
